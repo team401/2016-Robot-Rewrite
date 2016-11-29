@@ -2,318 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba031a48-ae00-45ca-a36e-fbe4f9259d6e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.idea/modules/CompetitionRobot.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.idea/modules/CompetitionRobot_main.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/.idea/modules/CompetitionRobot_test.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/GradleRIO.ipr" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/GradleRIO.iws" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/GradleRIO4Dummies.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/gradle/libs/GradleRIO.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/gradlew" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/gradlew.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/CONTRIBUTORS.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/COPYRIGHT.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/ant/build.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/ant/build.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/bin/strongback.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/bin/strongback.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/allclasses-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/allclasses-noframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/constant-values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/deprecated-list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/help-doc.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/index-all.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/DataRecordable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/DataRecorder.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/DataRecorderChannel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/DataWriter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/EventRecorder.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Executable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Executor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Logger.Level.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Logger.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Strongback.Configurator.TimerMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Strongback.Configurator.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/Strongback.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/StrongbackRequirementException.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/SwitchReactor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/Experimental.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/Immutable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/NotImplemented.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/NotThreadSafe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/ThreadSafe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/class-use/Experimental.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/class-use/Immutable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/class-use/NotImplemented.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/class-use/NotThreadSafe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/class-use/ThreadSafe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/annotation/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/DataRecordable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/DataRecorder.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/DataRecorderChannel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/DataWriter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/EventRecorder.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Executable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Executor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Logger.Level.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Logger.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Strongback.Configurator.TimerMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Strongback.Configurator.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/Strongback.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/StrongbackRequirementException.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/class-use/SwitchReactor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/Command.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/CommandGroup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/CommandState.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/ControllerCommand.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/Requirable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/Scheduler.CommandListener.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/Scheduler.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/UnmanagedControllerCommand.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/Command.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/CommandGroup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/CommandState.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/ControllerCommand.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/Requirable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/Scheduler.CommandListener.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/Scheduler.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/class-use/UnmanagedControllerCommand.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/command/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Accelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/AngleSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Clock.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Compass.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Counter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/CurrentSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/DistanceSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Fuse.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Gyroscope.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/LimitedMotor.Position.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/LimitedMotor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Motor.Direction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Motor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/PneumaticsModule.Faults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/PneumaticsModule.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/PowerPanel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Relay.State.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Relay.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Solenoid.Direction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Solenoid.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/SolenoidWithPosition.Position.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/SolenoidWithPosition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/SpeedController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/SpeedSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Stoppable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Switch.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TalonSRX.Faults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TalonSRX.FeedbackDevice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TalonSRX.StatusFrameRate.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TalonSRX.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TemperatureSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ThreeAxisAcceleration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ThreeAxisAccelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TwoAxisAcceleration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/TwoAxisAccelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/VoltageSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/Zeroable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Accelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/AngleSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Clock.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Compass.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Counter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/CurrentSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/DistanceSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Fuse.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Gyroscope.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/LimitedMotor.Position.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/LimitedMotor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Motor.Direction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Motor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/PneumaticsModule.Faults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/PneumaticsModule.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/PowerPanel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Relay.State.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Relay.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Solenoid.Direction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Solenoid.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/SolenoidWithPosition.Position.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/SolenoidWithPosition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/SpeedController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/SpeedSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Stoppable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Switch.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TalonSRX.Faults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TalonSRX.FeedbackDevice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TalonSRX.StatusFrameRate.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TalonSRX.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TemperatureSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/ThreeAxisAcceleration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/ThreeAxisAccelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TwoAxisAcceleration.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/TwoAxisAccelerometer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/VoltageSensor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/class-use/Zeroable.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/ContinuousRange.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/DirectionalAxis.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/FlightStick.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/Gamepad.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/InputDevice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/class-use/ContinuousRange.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/class-use/DirectionalAxis.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/class-use/FlightStick.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/class-use/Gamepad.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/class-use/InputDevice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/components/ui/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/Controller.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/PIDController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/PIDController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/SoftwarePIDController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/SoftwarePIDController.SourceType.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/SoftwarePIDController.Target.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/SoftwarePIDController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/TalonController.ControlMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/TalonController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/TalonController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/Controller.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/PIDController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/PIDController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/SoftwarePIDController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/SoftwarePIDController.SourceType.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/SoftwarePIDController.Target.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/SoftwarePIDController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/TalonController.ControlMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/TalonController.Gains.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/class-use/TalonController.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/control/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/MecanumDrive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/TankDrive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/class-use/MecanumDrive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/class-use/TankDrive.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/drive/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/DoubleBiFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/DoubleToDoubleFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/IntBiFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/IntToBooleanFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/IntToIntFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/class-use/DoubleBiFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/class-use/DoubleToDoubleFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/class-use/IntBiFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/class-use/IntToBooleanFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/class-use/IntToIntFunction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/function/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Accelerometers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.AngleSensors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Controllers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.DistanceSensors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.HumanInterfaceDevices.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Motors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Solenoids.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Switches.AnalogOption.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Switches.TriggerMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.Switches.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/Hardware.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Accelerometers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.AngleSensors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Controllers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.DistanceSensors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.HumanInterfaceDevices.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Motors.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Solenoids.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Switches.AnalogOption.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Switches.TriggerMode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.Switches.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/class-use/Hardware.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/hardware/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/Collections.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/Iterators.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/Metronome.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/Values.RangeMaker.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/Values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/class-use/Collections.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/class-use/Iterators.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/class-use/Metronome.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/class-use/Values.RangeMaker.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/class-use/Values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/org/strongback/util/package-use.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/overview-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/overview-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/overview-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/package-list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/serialized-form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/javadoc/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/fest-assert-1.4-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/fest-assert-1.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/fest-util-1.1.6-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/fest-util-1.1.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/hamcrest-core-1.3-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/hamcrest-core-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/junit-4.11-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/junit-4.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/metrics-core-3.1.0-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/metrics-core-3.1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/strongback-testing-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tests/strongback-testing.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tools/strongback-tools-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib-tools/strongback-tools.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib/strongback-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/lib/strongback.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/Robot.java.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/Strongback.userlibraries.import.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/Strongback.userlibraries.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/TestRobot.java.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/build.properties.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/build.xml.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/classpath.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/java/templates/project.template" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/libs/strongback/strongback.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../CompetitionRobot/src/main/java/org/team401/robot/Robot.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/kotlin/org/team401/robot/LinearActuator.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Quetzalcoatl.ipr" afterPath="$PROJECT_DIR$/Quetzalcoatl.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Quetzalcoatl.iws" afterPath="$PROJECT_DIR$/Quetzalcoatl.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -381,22 +74,25 @@
     <favorites_list name="Quetzalcoatl" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Robot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="459">
+              <caret line="45" column="57" lean-forward="false" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#2454#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="LinearActuator.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/team401/robot/LinearActuator.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="493">
+              <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -405,6 +101,14 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -509,6 +213,10 @@
                 <option name="name" value="jar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="copyMainKotlinClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Processes JVM resources 'main:resources'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="processResources" />
@@ -521,6 +229,10 @@
                 <option name="description" value="Reboot the RoboRIO" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="reboot" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="copyTestKotlinClasses" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs the unit tests." />
@@ -536,6 +248,11 @@
                 <option name="description" value="Compiles Java source 'main:java'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles the source set 'test'.kotlin." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileTestKotlin" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all checks." />
@@ -577,6 +294,11 @@
                 <option name="name" value="rioModeRun" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Compiles the source set 'main'.kotlin." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileKotlin" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Generates the Eclipse JDT settings file." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="eclipseJdt" />
@@ -603,7 +325,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1480460319534" />
+        <entry key="$PROJECT_DIR$" value="1480460915244" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -619,7 +341,25 @@
                         <option name="entries">
                           <list>
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/jaci.openrio.gradle/GradleRIO/4.5.0/2b9b9b55e56ac327ce70d02af8b227c53df36c62/GradleRIO-4.5.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.0.5-2/c402fdf4448c60d5a7546c0cd39919e38c9aa825/kotlin-gradle-plugin-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.0.5-2/e87f8f850b391aa9c72d197f397ccdc587243f94/kotlin-gradle-plugin-1.0.5-2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/jaci.openrio.delegate/NetworkDelegate/1.2.1/15ccc0c7f6b02acce66f1c73ac0cfc199b7faa5f/NetworkDelegate-1.2.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/f2d8698c46d1167ff24b06a840a87d91a02db891/commons-io-2.4-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/67313d715fbf0ea4fd0bdb69217fb77f807a8ce5/commons-lang-2.6-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.5-2/76a88b51832daf89444f5cca983874b269d0f0c/kotlin-stdlib-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.5-2/9a397ba5477bf49ae0418cc3e392b3c0e5a112d1/kotlin-stdlib-1.0.5-2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.0.5-2/a814efc868f25f4b182fb261790302cd0b6dad86/kotlin-android-extensions-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.0.5-2/bb9e0f0bf0660564a239e0b84e6c5e0766d6424b/kotlin-android-extensions-1.0.5-2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.0.5-2/52f1bfaa5d7ee423556e9bf1e9c9d64737997247/kotlin-gradle-plugin-api-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.0.5-2/9459bb9c4e82f47dad9bc87701a232a73208a5a/kotlin-gradle-plugin-api-1.0.5-2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.0.5-2/7ca5a6bd4aefb7b77da6a3545db764ac2fc29c09/kotlin-compiler-embeddable-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.0.5-2/1d939f97d5f9d1d5a471c50c495a5184270eca92/kotlin-compiler-embeddable-1.0.5-2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing/1.0.5-2/2b490026029000a99c9f6539296709ed8c323001/kotlin-annotation-processing-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing/1.0.5-2/53c702d28f99109cc76b863e1f2d1fbd5710098c/kotlin-annotation-processing-1.0.5-2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/1.0.5-2/9bbe5ee260ee5f78963b71fcdd8afa68aaf2184e/kotlin-runtime-1.0.5-2-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/1.0.5-2/16ba409719189072db06433a3c381015c0877998/kotlin-runtime-1.0.5-2.jar" />
                           </list>
                         </option>
                         <option name="path" value="$PROJECT_DIR$" />
@@ -750,6 +490,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/org/team401/robot/LinearActuator.kt" />
       </list>
     </option>
   </component>
@@ -787,6 +529,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -835,6 +578,32 @@
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="kotlin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quetzalcoatl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Quetzalcoatl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -845,7 +614,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
@@ -1100,37 +868,37 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1144,26 +912,57 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/team401/robot/LinearActuator.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#2454#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/team401/robot/LinearActuator.kt" />
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/org.team401.robot.kotlin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="544">
+          <caret line="32" column="64" lean-forward="false" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/team401/robot/Robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="45" column="57" lean-forward="false" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#2454#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/team401/robot/LinearActuator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
