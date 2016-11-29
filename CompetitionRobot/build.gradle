@@ -1,0 +1,49 @@
+/**
+Template file for classes using GradleRIO
+@author Jaci
+*/
+
+buildscript {
+  repositories {
+	mavenCentral()
+	maven {
+		name = "GradleRIO"
+		url = "http://dev.imjac.in/maven"
+	}
+  }
+  dependencies {
+    classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+'			//Change this line if you wish to Update GradleRIO
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'GradleRIO'
+
+gradlerio.robotClass = "org.team401.robot.Robot" // Main robot class DO NOT CHANGE
+gradlerio.team = "0401"                          // Our team number
+//gradlerio.rioIP = "10.40.01"                   // Preston whats the IP again
+
+def robotManifest = {
+  attributes 'Main-Class': 'edu.wpi.first.wpilibj.RobotBase'
+  attributes 'Robot-Class': gradlerio.robotClass
+}
+
+dependencies {
+    compile files('libs/strongback/java/lib/strongback.jar')
+}
+
+jar {
+  from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  manifest robotManifest
+}
+
+task genJavadoc(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives genJavadoc
+}
