@@ -4,7 +4,7 @@ Template file for classes using GradleRIO
 */
 
 buildscript {
-  repositories {
+    repositories {
 	mavenCentral()
 	maven {
 		name = "GradleRIO"
@@ -12,18 +12,18 @@ buildscript {
 	}
   }
   dependencies {
-    classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+'			//Change this line if you wish to Update GradleRIO
+    classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+'
   }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'GradleRIO'
+apply plugin: 'GradleRIO'                                 //Apply the GradleRIO plugin
 
-gradlerio.robotClass = "org.team401.robot.Robot" // Main robot class DO NOT CHANGE
-gradlerio.team = "0401"                          // Our team number
-gradlerio.rioIP = "10.0.40.01"                   // Preston whats the IP again
+gradlerio.robotClass = "org.team401.robot.Robot"  // Main robot class DO NOT CHANGE
+gradlerio.team = "0401"                           // Our team number
+gradlerio.rioIP = "10.40.01.20"                   // Preston whats the IP again
 
 def robotManifest = {
   attributes 'Main-Class': 'edu.wpi.first.wpilibj.RobotBase'

@@ -10,13 +10,13 @@
       <entry name="!?*.groovy" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel>
-      <module name="CompetitionRobot_main" target="1.8" />
-      <module name="CompetitionRobot_test" target="1.8" />
-      <module name="GradleRIO_main" target="1.8" />
-      <module name="GradleRIO_test" target="1.8" />
+      <module name="Quetzalcoatl_main" target="1.8" />
+      <module name="Quetzalcoatl_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
-  <component name="CopyrightManager" default="" />
+  <component name="CopyrightManager" default="">
+    <module2copyright />
+  </component>
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
@@ -24,7 +24,6 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="1.8" />
@@ -69,9 +68,9 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CompetitionRobot.iml" filepath="$PROJECT_DIR$/.idea/modules/CompetitionRobot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CompetitionRobot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/CompetitionRobot_main.iml" group="CompetitionRobot" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CompetitionRobot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/CompetitionRobot_test.iml" group="CompetitionRobot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Quetzalcoatl.iml" filepath="$PROJECT_DIR$/.idea/modules/Quetzalcoatl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Quetzalcoatl_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Quetzalcoatl_main.iml" group="Quetzalcoatl" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Quetzalcoatl_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Quetzalcoatl_test.iml" group="Quetzalcoatl" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
@@ -110,13 +109,6 @@
       <SOURCES>
         <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibJavaFinal/2016.5.1/ef3f2579369a73fb9ebcbd163a5bf601356d74b2/wpilibJavaFinal-2016.5.1-sources.jar!/" />
       </SOURCES>
-    </library>
-    <library name="strongback">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/strongback/java/lib/strongback.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
     </library>
   </component>
   <component name="masterDetails">
