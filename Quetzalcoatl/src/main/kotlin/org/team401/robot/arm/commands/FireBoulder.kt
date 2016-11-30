@@ -16,33 +16,18 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-package org.team401.robot.chassis
+package org.team401.robot.arm.commands
 
-import org.strongback.command.Requirable
-import org.team401.robot.arm.CannonShooter
-import org.team401.robot.components.LinearActuator
+import org.strongback.command.CommandGroup
+import org.team401.robot.arm.Arm
 
-class Arm(val dart: LinearActuator, val shooter: CannonShooter) : Requirable {
+class FireBoulder(arm: Arm, speed: Double) : CommandGroup() {
 
-    companion object {
-        const val DART_SPEED = 1.0
-    }
-
-    fun getCurrentAngle() = dart.getPosition()
-
-    fun raise() = raise(DART_SPEED)
-
-    fun raise(speed: Double) {
-        dart.drive(speed)
-    }
-
-    fun lower() = lower(DART_SPEED)
-
-    fun lower(speed: Double) {
-        dart.drive(-speed)
-    }
-
-    fun stop() {
-        dart.stop()
+    init {
+        sequentially(
+                SetWheelSpeed(arm.shooter, speed),
+                PushBoulder(arm.shooter.solenoid),
+                SetWheelSpeed(arm.shooter, speed)
+        )
     }
 }

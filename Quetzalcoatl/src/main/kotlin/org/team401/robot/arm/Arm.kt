@@ -19,48 +19,30 @@
 package org.team401.robot.arm
 
 import org.strongback.command.Requirable
-import org.strongback.components.Motor
-import org.strongback.components.Solenoid
-import org.strongback.components.Switch
+import org.team401.robot.arm.CannonShooter
+import org.team401.robot.components.LinearActuator
 
-class CannonShooter(val wheels: Motor, val solenoid: Solenoid, val switch: Switch) : Requirable {
+class Arm(val dart: LinearActuator, val shooter: CannonShooter) : Requirable {
 
     companion object {
-        const val INTAKE_SPEED = 1.0 // TODO fix intake speed
+        const val DART_SPEED = 1.0
     }
 
-    /**
-     * Spins the wheels to take a ball in. If a ball is already in the
-     * cannon then the wheels will not spin.
-     */
-    fun spinIn() {
-        if (!isBallIn()) {
-            wheels.speed = INTAKE_SPEED
-        }
+    fun getCurrentAngle() = dart.getPosition()
+
+    fun raise() = raise(DART_SPEED)
+
+    fun raise(speed: Double) {
+        dart.drive(speed)
     }
 
-    /**
-     * Spin the wheels at a certain speed to shoot the ball.
-     */
-    fun spinOut(speed: Double) {
-        wheels.speed = speed
+    fun lower() = lower(DART_SPEED)
+
+    fun lower(speed: Double) {
+        dart.drive(-speed)
     }
 
-    fun getWheelSpeed(): Double {
-        return wheels.speed
-    }
-
-    /**
-     * Stops the shooter wheels from spinning.
-     */
     fun stop() {
-        wheels.stop()
-    }
-
-    /**
-     * Returns whether a ball is in the shooter or not.
-     */
-    fun isBallIn(): Boolean {
-        return switch.isTriggered
+        dart.stop()
     }
 }
