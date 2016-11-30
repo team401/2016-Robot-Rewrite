@@ -25,10 +25,11 @@ import org.strongback.components.Motor;
 import org.strongback.components.Solenoid;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
+import org.team401.robot.chassis.QuezDrive;
 
 public class Robot extends IterativeRobot {
 
-    private QuezDrive robot;
+    private QuezDrive chassis;
 
     private FlightStick leftDriveController, rightDriveController, armController;
 
@@ -46,7 +47,7 @@ public class Robot extends IterativeRobot {
         // TODO add hi/lo gear solenoids
         Solenoid leftSolenoid = Hardware.Solenoids.doubleSolenoid(0, 1, Solenoid.Direction.STOPPED);
         Solenoid rightSolenoid = Hardware.Solenoids.doubleSolenoid(0, 1, Solenoid.Direction.STOPPED);
-        robot = new QuezDrive(leftGearbox, rightGearbox, leftSolenoid, rightSolenoid, Hardware.Solenoids.relay(0));
+        chassis = new QuezDrive(leftGearbox, rightGearbox, leftSolenoid, rightSolenoid, Hardware.Solenoids.relay(0));
 
         // TODO fix joystick ports
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopInit() {
-        Strongback.start();
+        Strongback.restart();
     }
 
     @Override
@@ -67,7 +68,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         // read values from joystick and drive (maybe)
-        robot.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
+        chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
     }
 
     @Override

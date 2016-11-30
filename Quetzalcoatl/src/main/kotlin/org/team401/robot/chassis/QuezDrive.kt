@@ -16,7 +16,7 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-package org.team401.robot
+package org.team401.robot.chassis
 
 import org.strongback.components.Motor
 import org.strongback.components.Relay
@@ -39,10 +39,7 @@ class QuezDrive(val leftGearbox: Motor, val rightGearbox: Motor,
     /**
      * Use the gyro to drive straight at the given speed.
      */
-    fun drive(speed: Double) {
-        checkGearSwitch(speed)
-        super.tank(speed, speed)
-    }
+    fun drive(speed: Double) = drive(speed, speed)
 
     /**
      * Drive at different speeds with each gearbox.
