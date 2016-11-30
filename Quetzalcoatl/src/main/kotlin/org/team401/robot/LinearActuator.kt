@@ -36,6 +36,9 @@ interface LinearActuator {
      */
     fun drive(speed: Double)
 
+    /**
+     * Stops the actuator's motor.
+     */
     fun stop() {
         drive(0.0)
     }
