@@ -18,6 +18,7 @@
 */
 package org.team401.robot;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 import org.strongback.Strongback;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
     private QuezDrive chassis;
 
     private FlightStick leftDriveController, rightDriveController, armController;
+
 
     @Override
     public void robotInit() {
@@ -53,6 +55,10 @@ public class Robot extends IterativeRobot {
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
         armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
+
+        Strongback.configure()
+                .recordDataToFile("/home/lvuser/")
+                .recordEventsToFile("/home/lvuser/", 2097152);
     }
 
     @Override
