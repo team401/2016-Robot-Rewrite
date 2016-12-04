@@ -18,40 +18,54 @@
 */
 package org.team401.robot;
 
-import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 import org.strongback.Strongback;
-import org.strongback.components.Motor;
+import org.strongback.SwitchReactor;
 import org.strongback.components.Solenoid;
+import org.strongback.components.Switch;
+import org.strongback.components.TalonSRX;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
+
+import org.team401.robot.arm.Arm;
+import org.team401.robot.arm.CannonShooter;
 import org.team401.robot.chassis.QuezDrive;
+import org.team401.robot.components.DartLinearActuator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Robot extends IterativeRobot {
 
     private QuezDrive chassis;
+    private Arm arm;
 
     private FlightStick leftDriveController, rightDriveController, armController;
 
 
     @Override
     public void robotInit() {
-        // TODO fix motor ports
-        Motor leftGearbox = Motor.compose(
-                Hardware.Motors.talonSRX(0),
-                Hardware.Motors.talonSRX(1),
-                Hardware.Motors.talonSRX(2));
-        Motor rightGearbox = Motor.compose(
-                Hardware.Motors.talonSRX(3),
-                Hardware.Motors.talonSRX(4),
-                Hardware.Motors.talonSRX(5)).invert();
-        // TODO add hi/lo gear solenoids
-        Solenoid leftSolenoid = Hardware.Solenoids.doubleSolenoid(0, 1, Solenoid.Direction.STOPPED);
-        Solenoid rightSolenoid = Hardware.Solenoids.doubleSolenoid(0, 1, Solenoid.Direction.STOPPED);
-        chassis = new QuezDrive(leftGearbox, rightGearbox, leftSolenoid, rightSolenoid, Hardware.Solenoids.relay(0));
+        // init motors
+        List<TalonSRX> leftMotors = new ArrayList<>();
+        leftMotors.add(Hardware.Motors.talonSRX(1));
+        leftMotors.add(Hardware.Motors.talonSRX(2));
+        leftMotors.add(Hardware.Motors.talonSRX(0));
+        List<TalonSRX> rightMotors = new ArrayList<>();
+        rightMotors.add(Hardware.Motors.talonSRX(5));
+        rightMotors.add(Hardware.Motors.talonSRX(6));
+        rightMotors.add(Hardware.Motors.talonSRX(7));
 
-        // TODO fix joystick ports
+        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.EXTENDING);
+        chassis = new QuezDrive(leftMotors, rightMotors, shifter);
+
+        TalonSRX dart = Hardware.Motors.talonSRX(4);
+        TalonSRX leftShooterWheel = Hardware.Motors.talonSRX(3);
+        TalonSRX rightShooterWheel = Hardware.Motors.talonSRX(8);
+        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 2, Solenoid.Direction.RETRACTING);
+
+        arm = new Arm(new DartLinearActuator(dart, null, null), new CannonShooter(leftShooterWheel, rightShooterWheel, shooter));
+
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
         armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
@@ -59,6 +73,12 @@ public class Robot extends IterativeRobot {
         Strongback.configure()
                 .recordDataToFile("/home/lvuser/")
                 .recordEventsToFile("/home/lvuser/", 2097152);
+
+        SwitchReactor switchReactor = Strongback.switchReactor();
+        switchReactor.onTriggered(rightDriveController.getButton(1), () -> chassis.toggleGear());
+
+        Strongback.dataRecorder()
+                .register("Gear", chassis.highGear());
     }
 
     @Override
@@ -67,14 +87,14 @@ public class Robot extends IterativeRobot {
     }
 
     @Override
-    public void autonomousInit() {
-
-    }
-
-    @Override
     public void teleopPeriodic() {
         // read values from joystick and drive (maybe)
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
+    }
+
+    @Override
+    public void autonomousInit() {
+        Strongback.start();
     }
 
     @Override

@@ -18,22 +18,19 @@
 */
 package org.team401.robot.chassis
 
-import org.strongback.components.Motor
-import org.strongback.components.Relay
 import org.strongback.components.Solenoid
+import org.strongback.components.Switch
+import org.strongback.components.TalonSRX
+import org.team401.robot.components.QuezGearbox
 
-import org.strongback.drive.TankDrive
+class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, shifter: Solenoid) {
 
-class QuezDrive(val leftGearbox: Motor, val rightGearbox: Motor,
-                val leftSolenoid: Solenoid, val rightSolenoid: Solenoid,
-                val highGear: Relay) : TankDrive(leftGearbox, rightGearbox, highGear) {
-
-    companion object {
-        const val HIGH_GEAR_SWAP = 10.0 // TODO find a value to switch between
-    }
+    val leftGearbox: QuezGearbox
+    val rightGearbox: QuezGearbox
 
     init {
-        // do init code here
+        leftGearbox = QuezGearbox(leftMotors, shifter, false)
+        rightGearbox = QuezGearbox(rightMotors, shifter, true)
     }
 
     /**
@@ -45,32 +42,16 @@ class QuezDrive(val leftGearbox: Motor, val rightGearbox: Motor,
      * Drive at different speeds with each gearbox.
      */
     fun drive(leftSpeed: Double, rightSpeed: Double) {
-        checkGearSwitch((leftSpeed + rightSpeed) / 2)
-        super.tank(leftSpeed, rightSpeed)
+        leftGearbox.setSpeed(leftSpeed)
+        rightGearbox.setSpeed(rightSpeed)
     }
 
-    /**
-     * Check and switch gear boxe
-     */
-    fun checkGearSwitch(speed: Double) {
-        if (speed >= HIGH_GEAR_SWAP) {
-            if (highGear.isOff) {
-                highGear()
-            } else {
-                lowGear()
-            }
-        }
+    fun toggleGear() {
+        leftGearbox.toggleGear()
+        rightGearbox.toggleGear()
     }
 
-    override fun highGear() {
-        leftSolenoid.extend()
-        rightSolenoid.extend()
-        super.highGear()
-    }
-
-    override fun lowGear() {
-        leftSolenoid.retract()
-        rightSolenoid.retract()
-        super.lowGear()
+    fun highGear(): Switch {
+        return leftGearbox.highGear
     }
 }

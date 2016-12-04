@@ -19,10 +19,9 @@
 package org.team401.robot.arm
 
 import org.strongback.command.Requirable
-import org.team401.robot.arm.CannonShooter
-import org.team401.robot.components.LinearActuator
+import org.team401.robot.components.DartLinearActuator
 
-class Arm(val dart: LinearActuator, val shooter: CannonShooter) : Requirable {
+class Arm(val dart: DartLinearActuator, val shooter: CannonShooter) : Requirable {
 
     companion object {
         const val DART_SPEED = 1.0
@@ -32,17 +31,11 @@ class Arm(val dart: LinearActuator, val shooter: CannonShooter) : Requirable {
 
     fun raise() = raise(DART_SPEED)
 
-    fun raise(speed: Double) {
-        dart.drive(speed)
-    }
+    fun raise(speed: Double) = dart.drive(speed)
 
     fun lower() = lower(DART_SPEED)
 
-    fun lower(speed: Double) {
-        dart.drive(-speed)
-    }
+    fun lower(speed: Double) = dart.drive(-speed)
 
-    fun stop() {
-        dart.stop()
-    }
+    fun stop() = dart.stop()
 }

@@ -18,28 +18,22 @@
 */
 package org.team401.robot.components
 
-interface LinearActuator {
+import org.strongback.components.Switch
+import org.strongback.components.TalonSRX
 
-    /**
-     * Get the position of the arm
-     */
-    fun getPosition(): Double
+class DartLinearActuator(val motor: TalonSRX, val bottomHolofex: Switch, val topHolofex: Switch) {
 
-    fun getTopHolofex(): Boolean
-
-    fun getBottomHolofex(): Boolean
-
-    /**
-     * Drive the linear actuator at a certain speed, a positive
-     * value should drive it out while a negative value should
-     * drive it back in. A speed of 0 should stop the motor.
-     */
-    fun drive(speed: Double)
-
-    /**
-     * Stops the actuator's motor.
-     */
-    fun stop() {
-        drive(0.0)
+    fun getPosition(): Double {
+        return 0.0 // TODO implement
     }
+
+    fun setPosition() {
+        // TODO implement
+    }
+
+    fun drive(speed: Double) {
+        motor.speed = speed
+    }
+
+    fun stop() = drive(0.0)
 }
