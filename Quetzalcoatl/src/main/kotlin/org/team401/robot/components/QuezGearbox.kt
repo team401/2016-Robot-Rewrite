@@ -18,16 +18,9 @@
 */
 package org.team401.robot.components
 
-import org.strongback.components.Solenoid
-import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 
-class QuezGearbox(val motors: List<TalonSRX>, val shifter: Solenoid, inverted: Boolean) {
-
-    // switchCount%2 == 0 is low gear
-    var switchCount = 0
-        private set
-    val highGear: Switch
+class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
 
     // 0 is front, 1 is back, 2 is middle
     init {
@@ -35,20 +28,11 @@ class QuezGearbox(val motors: List<TalonSRX>, val shifter: Solenoid, inverted: B
         motors[1].invert()
         if (inverted)
             motors.forEach { it.invert() }
-        highGear = Switch { switchCount % 2 == 1 }
     }
 
     // TODO add PID control
 
     fun setSpeed(speed: Double) {
         motors.forEach { it.speed = speed }
-    }
-
-    fun toggleGear() {
-        if (switchCount % 2 == 0) // switch to high
-            shifter.extend()
-        else // switch to low
-            shifter.retract()
-        switchCount++
     }
 }

@@ -23,14 +23,20 @@ import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 import org.team401.robot.components.QuezGearbox
 
-class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, shifter: Solenoid) {
+class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shifter: Solenoid) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox
 
+    var switchCount = 0
+        private set
+    private val highGear: Switch
+
     init {
-        leftGearbox = QuezGearbox(leftMotors, shifter, false)
-        rightGearbox = QuezGearbox(rightMotors, shifter, true)
+        leftGearbox = QuezGearbox(leftMotors, false)
+        rightGearbox = QuezGearbox(rightMotors, true)
+
+        highGear = Switch { switchCount % 2 == 1 }
     }
 
     /**
@@ -47,11 +53,14 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, shifter
     }
 
     fun toggleGear() {
-        leftGearbox.toggleGear()
-        rightGearbox.toggleGear()
+        if (highGear.isTriggered)
+            shifter.retract()
+        else
+            shifter.extend()
+        switchCount++
     }
 
     fun highGear(): Switch {
-        return leftGearbox.highGear
+        return highGear
     }
 }

@@ -52,6 +52,6 @@ class RobotTest {
         assertTrue(d.highGear().isTriggered());
         d.toggleGear();
         assertTrue(!d.highGear().isTriggered());
-        assertEquals(d.getLeftGearbox().getSwitchCount(), 2);
+        assertEquals(d.getSwitchCount(), 2);
     }
 }
