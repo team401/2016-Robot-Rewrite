@@ -35,7 +35,7 @@ class QuezGearbox(val motors: List<TalonSRX>, val shifter: Solenoid, inverted: B
         motors[1].invert()
         if (inverted)
             motors.forEach { it.invert() }
-        highGear = Switch { switchCount % 2 == 1 } // don't know if this will work... switchCount may be captured as 0?
+        highGear = Switch { switchCount % 2 == 1 }
     }
 
     // TODO add PID control

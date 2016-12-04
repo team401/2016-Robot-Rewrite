@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
 import org.strongback.components.Solenoid;
-import org.strongback.components.Switch;
 import org.strongback.components.TalonSRX;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
