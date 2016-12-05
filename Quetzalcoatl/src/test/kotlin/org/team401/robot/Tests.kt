@@ -1,5 +1,5 @@
 /*
-    Quetzalcoatl - Copperhead Robotics 2016 Robot code for FIRST Stronghold
+    Quetzalcoatl
     Copyright (C) 2016 Zach Kozar
 
     This program is free software; you can redistribute it and/or modify
@@ -16,29 +16,24 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-package org.team401.robot.components
+package org.team401.robot
 
 import org.strongback.components.TalonSRX
+import org.strongback.mock.Mock
+import org.team401.robot.chassis.QuezDrive
+import java.util.*
 
-class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
+fun getMockQuezDrive(): QuezDrive {
+    val leftMotors = ArrayList<TalonSRX>()
+    leftMotors.add(Mock.stoppedTalonSRX(1))
+    leftMotors.add(Mock.stoppedTalonSRX(2))
+    leftMotors.add(Mock.stoppedTalonSRX(0))
+    val rightMotors = ArrayList<TalonSRX>()
+    rightMotors.add(Mock.stoppedTalonSRX(5))
+    rightMotors.add(Mock.stoppedTalonSRX(6))
+    rightMotors.add(Mock.stoppedTalonSRX(7))
 
-    // 0 is front, 1 is back, 2 is middle
-    init {
-        motors[0].invert()
-        motors[1].invert()
-        if (inverted)
-            motors.forEach { it.invert() }
-    }
+    val solenoid = Mock.instantaneousSolenoid()
 
-    // TODO add PID control
-
-    fun setSpeed(speed: Double) {
-        motors.forEach { it.speed = speed }
-
-        motors[0].voltageSensor.voltage
-    }
-
-    fun getSpeed(): Double {
-        return motors[1].speed
-    }
+    return QuezDrive(leftMotors, rightMotors, solenoid)
 }
