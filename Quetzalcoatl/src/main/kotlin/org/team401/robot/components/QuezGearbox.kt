@@ -34,11 +34,20 @@ class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
 
     fun setSpeed(speed: Double) {
         motors.forEach { it.speed = speed }
-
-        motors[0].voltageSensor.voltage
     }
 
     fun getSpeed(): Double {
         return motors[1].speed
+    }
+
+    fun getTotalVoltage(): Double {
+        return motors[0].voltageSensor.voltage + motors[1].voltageSensor.voltage + motors[2].voltageSensor.voltage
+    }
+
+    fun getVoltage(motor: Int): Double {
+        if (motor < 0 || motor > 2)
+            return 0.0
+        else
+            return motors[0].voltageSensor.voltage
     }
 }
