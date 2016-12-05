@@ -36,9 +36,10 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shi
         const val MAX_DIF = 0.20
         const val TIME_INTERVAL = 20 // in ms
         // TODO find values
+        const val VOLT_CONST = 5.0
         const val SPEED_CONST = 5.0
         const val LOW_SPEED_CONST = 2.0
-        const val ACCEL_CONST = 5.0
+        const val ACCEL_CONST = 3.0
     }
 
     init {
@@ -71,15 +72,20 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shi
         val dif = Math.abs(leftPitch - rightPitch)
         // check for .5 seconds from last shift
         println("$leftPitch $rightPitch $currentSpeed $currentAccel ${Math.abs(currentMs - lastShift.ms)}")
-        if (dif <= MAX_DIF && Math.abs(currentMs - lastShift.ms) > 500) {
-            if (!highGear().isTriggered && max > 0 && currentSpeed > SPEED_CONST && currentAccel > ACCEL_CONST) {
+        if (dif <= MAX_DIF && Math.abs(currentMs - lastShift.ms) > 500)
+            if (!highGear().isTriggered &&
+                    max > 0 &&
+                    currentSpeed >= SPEED_CONST + SPEED_CONST * .2 &&
+                    currentAccel >= ACCEL_CONST)
                 toggleGear(currentSpeed, currentAccel)
-            } else if (highGear().isTriggered && currentSpeed <= SPEED_CONST && max > 0.75 && currentAccel < 0) {
+            else if (highGear().isTriggered &&
+                    currentSpeed <= SPEED_CONST &&
+                    max > 0.75 &&
+                    currentAccel < 0)
                 toggleGear(currentSpeed, currentAccel)
-            } else if (highGear().isTriggered && currentSpeed <= LOW_SPEED_CONST) {
+            else if (highGear().isTriggered &&
+                    currentSpeed <= LOW_SPEED_CONST)
                 toggleGear(currentSpeed, currentAccel)
-            }
-        }
 
         leftGearbox.setSpeed(leftPitch)
         rightGearbox.setSpeed(rightPitch)
@@ -95,12 +101,15 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shi
 
     private fun toggleGear(speed: Double, accel: Double) {
         toggleGear()
-        lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS), lastShift.switchCount + 1, speed, accel)
+        lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS),
+                lastShift.switchCount + 1, speed, accel)
     }
 
     fun highGear(): Switch {
         return lastShift.highGear
     }
 
-    data class LastShift(val ms: Long, val switchCount: Int, val speed: Double, val accel: Double, val highGear: Switch = Switch { switchCount % 2 == 1 })
+    data class LastShift(val ms: Long, val switchCount: Int,
+                         val speed: Double, val accel: Double,
+                         val highGear: Switch = Switch { switchCount % 2 == 1 })
 }

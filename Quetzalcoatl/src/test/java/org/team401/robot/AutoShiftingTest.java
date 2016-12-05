@@ -18,7 +18,7 @@ public class AutoShiftingTest {
         sleep(1000);
 
         // check upshift
-        d.drive(100, 100, 6, 6);
+        d.drive(100, 100, 7, 3);
         assertTrue(d.highGear().isTriggered());
 
         sleep(20);
@@ -35,7 +35,7 @@ public class AutoShiftingTest {
         sleep(1000);
 
         // check downshift - coasting
-        d.drive(100, 100, 6, 6);
+        d.drive(100, 100, 7, 3);
         assertTrue(d.highGear().isTriggered());
         sleep(20);
 
