@@ -35,9 +35,10 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shi
     companion object {
         const val MAX_DIF = 0.20
         const val TIME_INTERVAL = 20 // in ms
-        const val SPEED_CONST = 5.0 // TODO find a value
+        // TODO find values
+        const val SPEED_CONST = 5.0
         const val LOW_SPEED_CONST = 2.0
-        const val ACCEL_CONST = 5.0 // TODO find a value
+        const val ACCEL_CONST = 5.0
     }
 
     init {
