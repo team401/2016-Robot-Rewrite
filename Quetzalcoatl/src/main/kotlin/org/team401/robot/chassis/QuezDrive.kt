@@ -18,14 +18,13 @@
 */
 package org.team401.robot.chassis
 
-import org.strongback.components.Motor
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 import org.team401.robot.components.QuezGearbox
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(leftMotors: MutableList<Motor>, rightMotors: MutableList<Motor>, val shifter: Solenoid) {
+class QuezDrive(leftMotors: MutableList<TalonSRX>, rightMotors: MutableList<TalonSRX>, val shifter: Solenoid) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox

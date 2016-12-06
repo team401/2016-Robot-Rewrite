@@ -18,14 +18,11 @@
 */
 package org.team401.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
-import org.strongback.components.Motor;
 import org.strongback.components.Solenoid;
-import org.strongback.components.Switch;
 import org.strongback.components.TalonSRX;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
@@ -53,13 +50,12 @@ public class Robot extends IterativeRobot {
         Strongback.configure()
                 .recordDataToFile("/home/lvuser/")
                 .recordEventsToFile("/home/lvuser/", 2097152);
-
         // init motors
-        List<Motor> leftMotors = new ArrayList<>();
+        List<TalonSRX> leftMotors = new ArrayList<>();
         leftMotors.add(Hardware.Motors.talonSRX(1));
         leftMotors.add(Hardware.Motors.talonSRX(2));
         leftMotors.add(Hardware.Motors.talonSRX(0));
-        List<Motor> rightMotors = new ArrayList<>();
+        List<TalonSRX> rightMotors = new ArrayList<>();
         rightMotors.add(Hardware.Motors.talonSRX(5));
         rightMotors.add(Hardware.Motors.talonSRX(6));
         rightMotors.add(Hardware.Motors.talonSRX(7));
