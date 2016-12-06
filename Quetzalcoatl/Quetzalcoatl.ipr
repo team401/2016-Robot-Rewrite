@@ -12,6 +12,7 @@
     <bytecodeTargetLevel>
       <module name="Quetzalcoatl_main" target="1.8" />
       <module name="Quetzalcoatl_test" target="1.8" />
+      <module name="Quetzalcoatl_tests" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />

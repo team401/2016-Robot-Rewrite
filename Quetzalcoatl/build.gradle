@@ -29,7 +29,8 @@ def robotManifest = {
 }
 
 dependencies {
-    compile files('libs/strongback/java/lib/strongback.jar')
+    compile files('libs/strongback.jar')
+    compile files('libs/strongback-testing.jar')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 

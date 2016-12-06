@@ -18,13 +18,14 @@
 */
 package org.team401.robot.chassis
 
+import org.strongback.components.Motor
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 import org.team401.robot.components.QuezGearbox
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shifter: Solenoid) {
+class QuezDrive(leftMotors: MutableList<Motor>, rightMotors: MutableList<Motor>, val shifter: Solenoid) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox
@@ -72,6 +73,7 @@ class QuezDrive(leftMotors: List<TalonSRX>, rightMotors: List<TalonSRX>, val shi
         val dif = Math.abs(leftPitch - rightPitch)
         // check for .5 seconds from last shift
         println("$leftPitch $rightPitch $currentSpeed $currentAccel ${Math.abs(currentMs - lastShift.ms)}")
+
         if (dif <= MAX_DIF && Math.abs(currentMs - lastShift.ms) > 500)
             if (!highGear().isTriggered &&
                     max > 0 &&

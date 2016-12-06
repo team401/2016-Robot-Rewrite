@@ -18,16 +18,20 @@
 */
 package org.team401.robot.components
 
+import org.strongback.components.Motor
 import org.strongback.components.TalonSRX
 
-class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
+class QuezGearbox(val motors: MutableList<Motor>, inverted: Boolean) {
 
     // 0 is front, 1 is back, 2 is middle
     init {
-        motors[0].invert()
-        motors[1].invert()
-        if (inverted)
-            motors.forEach { it.invert() }
+        motors[0] = motors[0].invert()
+        motors[1] = motors[1].invert()
+        if (inverted) {
+            motors[0] = motors[0].invert()
+            motors[1] = motors[1].invert()
+            motors[2] = motors[2].invert()
+        }
     }
 
     // TODO add PID control
@@ -40,7 +44,7 @@ class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
         return motors[1].speed
     }
 
-    fun getTotalVoltage(): Double {
+    /*fun getTotalVoltage(): Double {
         return motors[0].voltageSensor.voltage + motors[1].voltageSensor.voltage + motors[2].voltageSensor.voltage
     }
 
@@ -49,5 +53,5 @@ class QuezGearbox(val motors: List<TalonSRX>, inverted: Boolean) {
             return 0.0
         else
             return motors[0].voltageSensor.voltage
-    }
+    }*/
 }

@@ -18,11 +18,14 @@
 */
 package org.team401.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
+import org.strongback.components.Motor;
 import org.strongback.components.Solenoid;
+import org.strongback.components.Switch;
 import org.strongback.components.TalonSRX;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
@@ -42,20 +45,26 @@ public class Robot extends IterativeRobot {
 
     private FlightStick leftDriveController, rightDriveController, armController;
 
+    private int tick;
+
 
     @Override
     public void robotInit() {
+        Strongback.configure()
+                .recordDataToFile("/home/lvuser/")
+                .recordEventsToFile("/home/lvuser/", 2097152);
+
         // init motors
-        List<TalonSRX> leftMotors = new ArrayList<>();
+        List<Motor> leftMotors = new ArrayList<>();
         leftMotors.add(Hardware.Motors.talonSRX(1));
         leftMotors.add(Hardware.Motors.talonSRX(2));
         leftMotors.add(Hardware.Motors.talonSRX(0));
-        List<TalonSRX> rightMotors = new ArrayList<>();
+        List<Motor> rightMotors = new ArrayList<>();
         rightMotors.add(Hardware.Motors.talonSRX(5));
         rightMotors.add(Hardware.Motors.talonSRX(6));
         rightMotors.add(Hardware.Motors.talonSRX(7));
 
-        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.EXTENDING);
+        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
         chassis = new QuezDrive(leftMotors, rightMotors, shifter);
 
         TalonSRX dart = Hardware.Motors.talonSRX(4);
@@ -63,18 +72,14 @@ public class Robot extends IterativeRobot {
         TalonSRX rightShooterWheel = Hardware.Motors.talonSRX(8);
         Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 2, Solenoid.Direction.RETRACTING);
 
-        arm = new Arm(new DartLinearActuator(dart, null, null), new CannonShooter(leftShooterWheel, rightShooterWheel, shooter));
+        arm = new Arm(new DartLinearActuator(dart, () -> false, () -> false), new CannonShooter(leftShooterWheel, rightShooterWheel, shooter));
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
         armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
 
-        Strongback.configure()
-                .recordDataToFile("/home/lvuser/")
-                .recordEventsToFile("/home/lvuser/", 2097152);
-
         SwitchReactor switchReactor = Strongback.switchReactor();
-        switchReactor.onTriggered(rightDriveController.getButton(1), () -> chassis.toggleGear());
+        switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear());
@@ -87,6 +92,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopPeriodic() {
+        Strongback.logger().info("Hi");
         // read values from joystick and drive (maybe)
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
     }
