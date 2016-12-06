@@ -36,10 +36,8 @@ class QuezDrive(leftMotors: MutableList<TalonSRX>, rightMotors: MutableList<Talo
         const val MAX_DIF = 0.20
         const val TIME_INTERVAL = 20 // in ms
         // TODO find values
-        const val VOLT_CONST = 5.0
         const val SPEED_CONST = 5.0
         const val LOW_SPEED_CONST = 2.0
-        const val ACCEL_CONST = 3.0
     }
 
     init {
@@ -70,14 +68,15 @@ class QuezDrive(leftMotors: MutableList<TalonSRX>, rightMotors: MutableList<Talo
         // only shift if were going mostly straight
         val max = Math.max(leftPitch, rightPitch)
         val dif = Math.abs(leftPitch - rightPitch)
+        val time = Math.abs(currentMs - lastShift.ms)
         // check for .5 seconds from last shift
-        println("$leftPitch $rightPitch $currentSpeed $currentAccel ${Math.abs(currentMs - lastShift.ms)}")
+        println("$leftPitch $rightPitch $currentSpeed $currentAccel $time")
 
-        if (dif <= MAX_DIF && Math.abs(currentMs - lastShift.ms) > 500)
+        if (dif <= MAX_DIF && time > 500)
             if (!highGear().isTriggered &&
                     max > 0 &&
                     currentSpeed >= SPEED_CONST + SPEED_CONST * .2 &&
-                    currentAccel >= ACCEL_CONST)
+                    currentAccel > 0)
                 toggleGear(currentSpeed, currentAccel)
             else if (highGear().isTriggered &&
                     currentSpeed <= SPEED_CONST &&
