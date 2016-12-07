@@ -51,17 +51,17 @@ public class Robot extends IterativeRobot {
                 .recordDataToFile("/home/lvuser/")
                 .recordEventsToFile("/home/lvuser/", 2097152);
         // init motors
-        List<TalonSRX> leftMotors = new ArrayList<>();
+        /*List<TalonSRX> leftMotors = new ArrayList<>();
         leftMotors.add(Hardware.Motors.talonSRX(1));
         leftMotors.add(Hardware.Motors.talonSRX(2));
         leftMotors.add(Hardware.Motors.talonSRX(0));
         List<TalonSRX> rightMotors = new ArrayList<>();
         rightMotors.add(Hardware.Motors.talonSRX(5));
         rightMotors.add(Hardware.Motors.talonSRX(6));
-        rightMotors.add(Hardware.Motors.talonSRX(7));
+        rightMotors.add(Hardware.Motors.talonSRX(7));*/
 
         Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
-        chassis = new QuezDrive(leftMotors, rightMotors, shifter);
+        chassis = new QuezDrive(shifter);
 
         TalonSRX dart = Hardware.Motors.talonSRX(4);
         TalonSRX leftShooterWheel = Hardware.Motors.talonSRX(3);

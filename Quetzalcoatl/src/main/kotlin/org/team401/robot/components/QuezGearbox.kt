@@ -19,39 +19,40 @@
 package org.team401.robot.components
 
 import org.strongback.components.TalonSRX
+import org.strongback.hardware.Hardware
 
-class QuezGearbox(val motors: MutableList<TalonSRX>, val inverted: Boolean) {
+class QuezGearbox(val inverted: Boolean) {
 
-    // 0 is front, 1 is back, 2 is middle
-    // TODO add PID control
+    val leader: TalonSRX
+    val front: TalonSRX
+    val rear: TalonSRX
 
-    fun setSpeed(speed: Double) {
-        for (i in motors.indices) {
-            if (inverted)
-                if (i == 2)
-                    motors[i].speed = -speed
-                else
-                    motors[i].speed = speed
-            else
-                if (i == 2)
-                    motors[i].speed = speed
-                else
-                    motors[i].speed = -speed
+    init {
+        if (inverted) {
+            leader = Hardware.Motors.talonSRX(7)
+            front = Hardware.Motors.talonSRX(5, leader, true)
+            rear = Hardware.Motors.talonSRX(6, leader, true)
+        } else {
+            leader = Hardware.Motors.talonSRX(0)
+            front = Hardware.Motors.talonSRX(1, leader, true)
+            rear = Hardware.Motors.talonSRX(2, leader, true)
         }
     }
 
-    fun getSpeed(): Double {
-        return motors[1].speed
-    }
+    // TODO add PID control
 
-    fun getTotalVoltage(): Double {
-        return motors[0].voltageSensor.voltage + motors[1].voltageSensor.voltage + motors[2].voltageSensor.voltage
-    }
-
-    fun getVoltage(motor: Int): Double {
-        if (motor < 0 || motor > 2)
-            return 0.0
+    fun setSpeed(speed: Double) {
+        if (inverted)
+            leader.speed = -speed
         else
-            return motors[0].voltageSensor.voltage
+            leader.speed = speed
+    }
+
+    fun getSpeed(): Double {
+        return leader.speed
+    }
+
+    fun getVoltage(): Double {
+        return leader.voltageSensor.voltage
     }
 }

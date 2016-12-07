@@ -20,11 +20,10 @@ package org.team401.robot.chassis
 
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
-import org.strongback.components.TalonSRX
 import org.team401.robot.components.QuezGearbox
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(leftMotors: MutableList<TalonSRX>, rightMotors: MutableList<TalonSRX>, val shifter: Solenoid) {
+class QuezDrive(val shifter: Solenoid) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox
@@ -43,8 +42,8 @@ class QuezDrive(leftMotors: MutableList<TalonSRX>, rightMotors: MutableList<Talo
     }
 
     init {
-        leftGearbox = QuezGearbox(leftMotors, false)
-        rightGearbox = QuezGearbox(rightMotors, true)
+        leftGearbox = QuezGearbox(false)
+        rightGearbox = QuezGearbox(true)
 
         lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS), 0, 0.0, 0.0)
 
