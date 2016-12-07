@@ -78,7 +78,8 @@ public class Robot extends IterativeRobot {
         switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
 
         Strongback.dataRecorder()
-                .register("Gear", chassis.highGear());
+                .register("Gear", chassis.highGear())
+                .register("Arm Unlock", armController.getThumb());
     }
 
     @Override
@@ -88,9 +89,9 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void teleopPeriodic() {
-        Strongback.logger().info("Hi");
-        // read values from joystick and drive (maybe)
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
+        if (armController.getThumb().isTriggered())
+            arm.getDart().drive(armController.getPitch().read());
     }
 
     @Override
