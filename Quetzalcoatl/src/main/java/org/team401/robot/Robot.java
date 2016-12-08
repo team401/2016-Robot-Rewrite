@@ -33,6 +33,7 @@ import org.team401.robot.arm.CannonShooter;
 import org.team401.robot.arm.commands.FireBoulder;
 import org.team401.robot.chassis.QuezDrive;
 import org.team401.robot.components.DartLinearActuator;
+import org.team401.robot.math.PIDGains;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,25 +53,13 @@ public class Robot extends IterativeRobot {
         Strongback.configure()
                 .recordDataToFile("/home/lvuser/")
                 .recordEventsToFile("/home/lvuser/", 2097152);
-        // init motors
-        /*List<TalonSRX> leftMotors = new ArrayList<>();
-        leftMotors.add(Hardware.Motors.talonSRX(1));
-        leftMotors.add(Hardware.Motors.talonSRX(2));
-        leftMotors.add(Hardware.Motors.talonSRX(0));
-        List<TalonSRX> rightMotors = new ArrayList<>();
-        rightMotors.add(Hardware.Motors.talonSRX(5));
-        rightMotors.add(Hardware.Motors.talonSRX(6));
-        rightMotors.add(Hardware.Motors.talonSRX(7));*/
 
         Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
         chassis = new QuezDrive(shifter);
 
-        TalonSRX dart = Hardware.Motors.talonSRX(4);
-        TalonSRX leftShooterWheel = Hardware.Motors.talonSRX(3);
-        TalonSRX rightShooterWheel = Hardware.Motors.talonSRX(8);
         Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 2, Solenoid.Direction.RETRACTING);
 
-        arm = new Arm(new DartLinearActuator(dart, Hardware.Switches.normallyClosed(0), Hardware.Switches.normallyClosed(2)), new CannonShooter(shooter));
+        arm = new Arm(new DartLinearActuator(), new CannonShooter(new PIDGains(1, 0, 0), shooter));
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
@@ -78,15 +67,12 @@ public class Robot extends IterativeRobot {
 
         SwitchReactor switchReactor = Strongback.switchReactor();
         switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
-        switchReactor.onTriggered(armController.getButton(5), () -> new FireBoulder(arm, 0.5));
-
-
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())
                 .register("Arm Unlock", armController.getThumb())
-                .register("Top", arm.getDart().getTopHolofex())
-                .register("Bottom", arm.getDart().getBottomHolofex());
+                .register("Top", arm.getDart().getTopHoloflex())
+                .register("Bottom", arm.getDart().getBottomHoloflex());
     }
 
     @Override
@@ -99,7 +85,7 @@ public class Robot extends IterativeRobot {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
         arm.getDart().drive(armController.getPitch().read());
         if (armController.getDPad(0).getDirection() == 0) {
-            arm.getShooter().spinOut(0.75);
+            arm.getShooter().spinOut(armController.getThrottle().read());
         } if (armController.getThumb().isTriggered()) {
             arm.getShooter().spinIn();
         } else {

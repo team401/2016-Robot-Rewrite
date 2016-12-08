@@ -20,21 +20,28 @@ package org.team401.robot.arm
 
 import org.strongback.command.Requirable
 import org.strongback.components.Solenoid
-import org.strongback.components.TalonSRX
+import org.strongback.control.TalonController
 import org.strongback.hardware.Hardware
+import org.team401.robot.math.PIDGains
+import org.team401.robot.math.toRange
 
-class CannonShooter(val solenoid: Solenoid) : Requirable {
+class CannonShooter(gains: PIDGains, val solenoid: Solenoid) : Requirable {
 
-    val leftWheel: TalonSRX
-    val rightWheel: TalonSRX
+    val leftWheel: TalonController
+    val rightWheel: TalonController
 
     companion object {
-        const val INTAKE_SPEED = 0.2 // TODO fix intake speed
+        const val INTAKE_SPEED = 2000.0 // TODO fix intake speed
     }
 
     init {
-        leftWheel = Hardware.Motors.talonSRX(3)
-        rightWheel = Hardware.Motors.talonSRX(8, leftWheel, true)
+        leftWheel = Hardware.Controllers.talonController(3, 20.0, 0.0)
+        leftWheel.controlMode = TalonController.ControlMode.SPEED
+        leftWheel.withGains(gains.p, gains.i, gains.d)
+
+        rightWheel = Hardware.Controllers.talonController(3, 20.0, 0.0).reverseOutput(true)
+        rightWheel.controlMode = TalonController.ControlMode.SPEED
+        rightWheel.withGains(gains.p, gains.i, gains.d)
     }
 
     /**
@@ -44,18 +51,21 @@ class CannonShooter(val solenoid: Solenoid) : Requirable {
     fun spinIn() {
         if (!isBallIn()) {
             leftWheel.speed = INTAKE_SPEED
+            rightWheel.speed = INTAKE_SPEED
         }
     }
 
     /**
      * Spin the wheels at a certain speed to shoot the ball.
      */
-    fun spinOut(speed: Double) {
-        leftWheel.speed = -speed
+    fun spinOut(throttle: Double) {
+        val speed = toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)
+        leftWheel.speed = speed
+        rightWheel.speed = speed
     }
 
     fun getWheelSpeed(): Double {
-        return 1.0
+        return (leftWheel.speed + rightWheel.speed) / 2
     }
 
     /**
@@ -63,6 +73,7 @@ class CannonShooter(val solenoid: Solenoid) : Requirable {
      */
     fun stop() {
         leftWheel.stop()
+        rightWheel.stop()
     }
 
     /**

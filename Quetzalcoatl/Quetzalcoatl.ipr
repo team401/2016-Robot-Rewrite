@@ -186,6 +186,13 @@
       </item>
     </group>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="Zach Kozar">
+      <words>
+        <w>holoflex</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Quetzalcoatl.iml" filepath="$PROJECT_DIR$/.idea/modules/Quetzalcoatl.iml" />
