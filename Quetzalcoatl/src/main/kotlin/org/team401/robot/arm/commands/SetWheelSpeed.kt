@@ -23,10 +23,13 @@ import org.team401.robot.arm.CannonShooter
 
 class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command() {
 
-    override fun execute(): Boolean {
+    override fun initialize() {
         shooter.spinOut(throttle)
-        Thread.sleep(1000)
-        return true // TODO this should probably be fixed to check a range
+
+    }
+
+    override fun execute(): Boolean {
+        return true
     }
 
     override fun interrupted() {

@@ -60,6 +60,7 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
     fun drive(leftPitch: Double, rightPitch: Double) {
         val currentSpeed = (leftGearbox.getSpeed() + rightGearbox.getSpeed()) / 2                // get speed
         val currentAccel = (currentSpeed - lastSpeed) / TIME_INTERVAL                            // calculate acceleration
+
         drive(leftPitch, rightPitch, currentSpeed, currentAccel)
     }
 
@@ -87,8 +88,8 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
                     currentSpeed <= LOW_SPEED_CONST)
                 toggleGear(currentSpeed, currentAccel)
 
-        leftGearbox.setSpeed(leftPitch)
-        rightGearbox.setSpeed(rightPitch)
+        leftGearbox.setSpeed(if (demoMode) leftPitch / 2 else leftPitch)
+        rightGearbox.setSpeed(if (demoMode) rightPitch / 2 else rightPitch)
         lastSpeed = currentSpeed
     }
 

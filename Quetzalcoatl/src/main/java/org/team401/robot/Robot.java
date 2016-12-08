@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
 import org.strongback.components.Solenoid;
+import org.strongback.components.Switch;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
 
@@ -31,6 +32,7 @@ import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
 import org.team401.robot.arm.commands.FireBoulder;
 import org.team401.robot.arm.commands.PushBoulder;
+import org.team401.robot.arm.commands.SetWheelSpeed;
 import org.team401.robot.chassis.QuezDrive;
 import org.team401.robot.commands.ToggleDemoMode;
 import org.team401.robot.components.DartLinearActuator;
@@ -65,13 +67,34 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Demo Mode", false);
         SmartDashboard.putBoolean("Auto Shooting Mode", true);
 
+        Switch gearToggle = rightDriveController.getButton(2);
+        Switch demoMode = armController.getButton(9); // change these buttons
+        Switch toggleShootMode = armController.getButton(10);
+        Switch trigger = armController.getTrigger();
+        Switch spinOut = () -> armController.getDPad(0).getDirection() == 0;
+        Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
+
+        // y cant strongback let me invert a switch :(
+        Switch oneButtonShootEnabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
+        Switch oneButtonShootDisabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
 
         SwitchReactor switchReactor = Strongback.switchReactor();
-        switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
-        switchReactor.onTriggered(armController.getButton(9), () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
-        switchReactor.onTriggeredSubmit(
-                () -> armController.getTrigger().isTriggered() && SmartDashboard.getBoolean("Auto Shooting Mode", false),
+        switchReactor.onTriggered(gearToggle, () -> chassis.toggleGear());
+        switchReactor.onTriggered(demoMode, () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
+        switchReactor.onTriggered(toggleShootMode, () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
+
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootEnabled, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
+        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+                () -> new SetWheelSpeed(arm.getShooter(), 0));
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, trigger),
+                () -> new PushBoulder(arm.getShooter().getSolenoid()));
+        switchReactor.onTriggered(spinIn,
+                () -> arm.getShooter().spinIn());
+        switchReactor.onUntriggered(spinIn,
+                () -> arm.getShooter().stop());
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())
@@ -92,18 +115,6 @@ public class Robot extends IterativeRobot {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
 
         arm.getDart().drive(armController.getPitch().read());
-
-        if (armController.getDPad(0).getDirection() == 0) {
-            arm.getShooter().spinOut(armController.getThrottle().read());
-        } else if (armController.getThumb().isTriggered()) {
-            arm.getShooter().spinIn();
-        } else {
-            arm.getShooter().stop();
-        }
-
-        if (!SmartDashboard.getBoolean("Auto Shooting Mode"))
-            Strongback.submit(new PushBoulder(arm.getShooter().getSolenoid()));
-
     }
 
     @Override
