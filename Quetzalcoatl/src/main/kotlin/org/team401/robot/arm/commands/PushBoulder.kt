@@ -24,9 +24,10 @@ import org.strongback.components.Solenoid
 class PushBoulder(val solenoid: Solenoid) : Command() {
 
     override fun execute(): Boolean {
-        if (!solenoid.isExtending)
-            solenoid.extend()
-        return solenoid.isStopped
+        solenoid.extend()
+        Thread.sleep(1000)
+        solenoid.retract()
+        return true
     }
 
     override fun end() {

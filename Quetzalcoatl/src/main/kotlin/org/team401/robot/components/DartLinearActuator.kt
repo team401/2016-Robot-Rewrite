@@ -21,7 +21,7 @@ package org.team401.robot.components
 import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 
-class DartLinearActuator(val motor: TalonSRX, val bottomHolofex: Switch, val topHolofex: Switch) {
+class DartLinearActuator(val motor: TalonSRX, val topHolofex: Switch, val bottomHolofex: Switch) {
 
     fun getPosition(): Double {
         return 0.0 // TODO implement
@@ -31,8 +31,14 @@ class DartLinearActuator(val motor: TalonSRX, val bottomHolofex: Switch, val top
         // TODO implement
     }
 
-    fun drive(speed: Double) {
-        motor.speed = speed
+    fun drive(pitch: Double) {
+        if (topHolofex.isTriggered && pitch > 0)
+            stop()
+        else if (bottomHolofex.isTriggered && pitch < 0)
+            stop()
+        else
+            motor.speed = pitch
+
     }
 
     fun stop() = drive(0.0)

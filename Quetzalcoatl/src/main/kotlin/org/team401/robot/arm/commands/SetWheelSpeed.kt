@@ -25,7 +25,8 @@ class SetWheelSpeed(val shooter: CannonShooter, val speed: Double) : Command() {
 
     override fun execute(): Boolean {
         shooter.spinOut(speed)
-        return shooter.getWheelSpeed() >= speed // TODO this should probably be fixed to check a range
+        Thread.sleep(1000)
+        return true // TODO this should probably be fixed to check a range
     }
 
     override fun interrupted() {

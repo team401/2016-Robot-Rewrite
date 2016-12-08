@@ -21,15 +21,20 @@ package org.team401.robot.arm
 import org.strongback.command.Requirable
 import org.strongback.components.Solenoid
 import org.strongback.components.TalonSRX
+import org.strongback.hardware.Hardware
 
-class CannonShooter(val leftWheel: TalonSRX, val rightWheel: TalonSRX, val solenoid: Solenoid) : Requirable {
+class CannonShooter(val solenoid: Solenoid) : Requirable {
+
+    val leftWheel: TalonSRX
+    val rightWheel: TalonSRX
 
     companion object {
-        const val INTAKE_SPEED = 1.0 // TODO fix intake speed
+        const val INTAKE_SPEED = 0.2 // TODO fix intake speed
     }
 
     init {
-        rightWheel.invert()
+        leftWheel = Hardware.Motors.talonSRX(3)
+        rightWheel = Hardware.Motors.talonSRX(8, leftWheel, true)
     }
 
     /**
@@ -39,7 +44,6 @@ class CannonShooter(val leftWheel: TalonSRX, val rightWheel: TalonSRX, val solen
     fun spinIn() {
         if (!isBallIn()) {
             leftWheel.speed = INTAKE_SPEED
-            rightWheel.speed = INTAKE_SPEED
         }
     }
 
@@ -47,8 +51,7 @@ class CannonShooter(val leftWheel: TalonSRX, val rightWheel: TalonSRX, val solen
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(speed: Double) {
-        leftWheel.speed = speed
-        rightWheel.speed = speed
+        leftWheel.speed = -speed
     }
 
     fun getWheelSpeed(): Double {
@@ -60,7 +63,6 @@ class CannonShooter(val leftWheel: TalonSRX, val rightWheel: TalonSRX, val solen
      */
     fun stop() {
         leftWheel.stop()
-        rightWheel.stop()
     }
 
     /**

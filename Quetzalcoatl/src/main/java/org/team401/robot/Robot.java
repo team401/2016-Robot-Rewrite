@@ -20,6 +20,7 @@ package org.team401.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
+import edu.wpi.first.wpilibj.PWM;
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
 import org.strongback.components.Solenoid;
@@ -29,6 +30,7 @@ import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
+import org.team401.robot.arm.commands.FireBoulder;
 import org.team401.robot.chassis.QuezDrive;
 import org.team401.robot.components.DartLinearActuator;
 
@@ -68,7 +70,7 @@ public class Robot extends IterativeRobot {
         TalonSRX rightShooterWheel = Hardware.Motors.talonSRX(8);
         Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 2, Solenoid.Direction.RETRACTING);
 
-        arm = new Arm(new DartLinearActuator(dart, () -> false, () -> false), new CannonShooter(leftShooterWheel, rightShooterWheel, shooter));
+        arm = new Arm(new DartLinearActuator(dart, Hardware.Switches.normallyClosed(0), Hardware.Switches.normallyClosed(2)), new CannonShooter(shooter));
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
@@ -76,10 +78,15 @@ public class Robot extends IterativeRobot {
 
         SwitchReactor switchReactor = Strongback.switchReactor();
         switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
+        switchReactor.onTriggered(armController.getButton(5), () -> new FireBoulder(arm, 0.5));
+
+
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())
-                .register("Arm Unlock", armController.getThumb());
+                .register("Arm Unlock", armController.getThumb())
+                .register("Top", arm.getDart().getTopHolofex())
+                .register("Bottom", arm.getDart().getBottomHolofex());
     }
 
     @Override
@@ -90,8 +97,18 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
-        if (armController.getThumb().isTriggered())
-            arm.getDart().drive(armController.getPitch().read());
+        arm.getDart().drive(armController.getPitch().read());
+        if (armController.getDPad(0).getDirection() == 0) {
+            arm.getShooter().spinOut(0.75);
+        } if (armController.getThumb().isTriggered()) {
+            arm.getShooter().spinIn();
+        } else {
+            arm.getShooter().stop();
+        }
+        if (armController.getTrigger().isTriggered())
+            arm.getShooter().getSolenoid().extend();
+        else
+            arm.getShooter().getSolenoid().retract();
     }
 
     @Override
