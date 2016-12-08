@@ -34,14 +34,6 @@ class DartLinearActuator() {
         bottomHoloflex = Hardware.Switches.normallyClosed(2)
     }
 
-    fun getPosition(): Double {
-        return 0.0 // TODO implement
-    }
-
-    fun setPosition() {
-        // TODO implement
-    }
-
     fun drive(pitch: Double) {
         if (topHoloflex.isTriggered && pitch > 0)
             stop()
@@ -49,7 +41,6 @@ class DartLinearActuator() {
             stop()
         else
             motor.speed = pitch
-
     }
 
     fun stop() = drive(0.0)

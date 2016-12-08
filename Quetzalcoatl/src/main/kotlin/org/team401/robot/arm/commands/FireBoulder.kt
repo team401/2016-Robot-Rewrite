@@ -21,13 +21,13 @@ package org.team401.robot.arm.commands
 import org.strongback.command.CommandGroup
 import org.team401.robot.arm.Arm
 
-class FireBoulder(arm: Arm, speed: Double) : CommandGroup() {
+class FireBoulder(arm: Arm, throttle: Double) : CommandGroup() {
 
     init {
         sequentially(
-                SetWheelSpeed(arm.shooter, speed),
+                SetWheelSpeed(arm.shooter, throttle),
                 PushBoulder(arm.shooter.solenoid),
-                SetWheelSpeed(arm.shooter, speed)
+                SetWheelSpeed(arm.shooter, 0.0)
         )
     }
 }

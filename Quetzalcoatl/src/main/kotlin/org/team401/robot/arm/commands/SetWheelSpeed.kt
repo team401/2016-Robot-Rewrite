@@ -21,10 +21,10 @@ package org.team401.robot.arm.commands
 import org.strongback.command.Command
 import org.team401.robot.arm.CannonShooter
 
-class SetWheelSpeed(val shooter: CannonShooter, val speed: Double) : Command() {
+class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command() {
 
     override fun execute(): Boolean {
-        shooter.spinOut(speed)
+        shooter.spinOut(throttle)
         Thread.sleep(1000)
         return true // TODO this should probably be fixed to check a range
     }

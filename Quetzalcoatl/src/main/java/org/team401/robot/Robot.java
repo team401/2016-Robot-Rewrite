@@ -20,23 +20,21 @@ package org.team401.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
 import org.strongback.components.Solenoid;
-import org.strongback.components.TalonSRX;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
 import org.team401.robot.arm.commands.FireBoulder;
+import org.team401.robot.arm.commands.PushBoulder;
 import org.team401.robot.chassis.QuezDrive;
+import org.team401.robot.commands.ToggleDemoMode;
 import org.team401.robot.components.DartLinearActuator;
 import org.team401.robot.math.PIDGains;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Robot extends IterativeRobot {
 
@@ -55,24 +53,33 @@ public class Robot extends IterativeRobot {
                 .recordEventsToFile("/home/lvuser/", 2097152);
 
         Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
-        chassis = new QuezDrive(shifter);
+        chassis = new QuezDrive(new PIDGains(1, 0, 0), shifter, false);
 
-        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 2, Solenoid.Direction.RETRACTING);
+        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 5, Solenoid.Direction.RETRACTING);
+        arm = new Arm(new DartLinearActuator(),
+                new CannonShooter(new PIDGains(1, 0, 0), shooter, false, false));
 
-        arm = new Arm(new DartLinearActuator(), new CannonShooter(new PIDGains(1, 0, 0), shooter));
-
-        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
         armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
 
+        SmartDashboard.putBoolean("Demo Mode", false);
+        SmartDashboard.putBoolean("Auto Shooting Mode", true);
+
+
         SwitchReactor switchReactor = Strongback.switchReactor();
         switchReactor.onTriggered(rightDriveController.getButton(2), () -> chassis.toggleGear());
+        switchReactor.onTriggered(armController.getButton(9), () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
+        switchReactor.onTriggeredSubmit(
+                () -> armController.getTrigger().isTriggered() && SmartDashboard.getBoolean("Auto Shooting Mode", false),
+                () -> new FireBoulder(arm, armController.getThrottle().read()));
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())
                 .register("Arm Unlock", armController.getThumb())
                 .register("Top", arm.getDart().getTopHoloflex())
                 .register("Bottom", arm.getDart().getBottomHoloflex());
+
+
     }
 
     @Override
@@ -83,18 +90,20 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
+
         arm.getDart().drive(armController.getPitch().read());
+
         if (armController.getDPad(0).getDirection() == 0) {
             arm.getShooter().spinOut(armController.getThrottle().read());
-        } if (armController.getThumb().isTriggered()) {
+        } else if (armController.getThumb().isTriggered()) {
             arm.getShooter().spinIn();
         } else {
             arm.getShooter().stop();
         }
-        if (armController.getTrigger().isTriggered())
-            arm.getShooter().getSolenoid().extend();
-        else
-            arm.getShooter().getSolenoid().retract();
+
+        if (!SmartDashboard.getBoolean("Auto Shooting Mode"))
+            Strongback.submit(new PushBoulder(arm.getShooter().getSolenoid()));
+
     }
 
     @Override

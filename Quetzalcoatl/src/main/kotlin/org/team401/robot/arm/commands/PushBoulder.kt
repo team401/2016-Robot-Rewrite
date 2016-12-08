@@ -25,7 +25,7 @@ class PushBoulder(val solenoid: Solenoid) : Command() {
 
     override fun execute(): Boolean {
         solenoid.extend()
-        Thread.sleep(1000)
+        Thread.sleep(500)
         solenoid.retract()
         return true
     }
@@ -35,6 +35,6 @@ class PushBoulder(val solenoid: Solenoid) : Command() {
     }
 
     override fun interrupted() {
-        solenoid.retract() // Retract the solenoid to it's starting position
+        solenoid.retract()
     }
 }

@@ -21,9 +21,10 @@ package org.team401.robot.chassis
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
 import org.team401.robot.components.QuezGearbox
+import org.team401.robot.math.PIDGains
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(val shifter: Solenoid) {
+class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox

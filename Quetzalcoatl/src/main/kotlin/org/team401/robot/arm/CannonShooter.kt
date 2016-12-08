@@ -20,12 +20,19 @@ package org.team401.robot.arm
 
 import org.strongback.command.Requirable
 import org.strongback.components.Solenoid
+import org.strongback.components.Stoppable
 import org.strongback.control.TalonController
 import org.strongback.hardware.Hardware
 import org.team401.robot.math.PIDGains
 import org.team401.robot.math.toRange
 
-class CannonShooter(gains: PIDGains, val solenoid: Solenoid) : Requirable {
+
+/**
+ * @param gains PID values for the wheels
+ * @param solenoid the solenoid that controls the robot's shooter
+ * @param auto whether to use commands to auto shoot or shoot manually
+ */
+class CannonShooter(gains: PIDGains, val solenoid: Solenoid, val auto: Boolean, var demoMode: Boolean) : Requirable, Stoppable {
 
     val leftWheel: TalonController
     val rightWheel: TalonController
@@ -39,7 +46,7 @@ class CannonShooter(gains: PIDGains, val solenoid: Solenoid) : Requirable {
         leftWheel.controlMode = TalonController.ControlMode.SPEED
         leftWheel.withGains(gains.p, gains.i, gains.d)
 
-        rightWheel = Hardware.Controllers.talonController(3, 20.0, 0.0).reverseOutput(true)
+        rightWheel = Hardware.Controllers.talonController(8, 20.0, 0.0).reverseOutput(true)
         rightWheel.controlMode = TalonController.ControlMode.SPEED
         rightWheel.withGains(gains.p, gains.i, gains.d)
     }
@@ -52,14 +59,16 @@ class CannonShooter(gains: PIDGains, val solenoid: Solenoid) : Requirable {
         if (!isBallIn()) {
             leftWheel.speed = INTAKE_SPEED
             rightWheel.speed = INTAKE_SPEED
-        }
+        } else
+            stop()
     }
 
     /**
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(throttle: Double) {
-        val speed = toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)
+        val range = toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)
+        val speed = if (demoMode) range / 2 else range
         leftWheel.speed = speed
         rightWheel.speed = speed
     }
@@ -71,7 +80,7 @@ class CannonShooter(gains: PIDGains, val solenoid: Solenoid) : Requirable {
     /**
      * Stops the shooter wheels from spinning.
      */
-    fun stop() {
+    override fun stop() {
         leftWheel.stop()
         rightWheel.stop()
     }
