@@ -1,5 +1,5 @@
 /*
-    Quetzalcoatl - Copperhead Robotics 2016 Robot code for FIRST Stronghold
+    Quetzalcoatl
     Copyright (C) 2016 Zach Kozar
 
     This program is free software; you can redistribute it and/or modify
@@ -16,19 +16,23 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-package org.team401.robot.arm.commands
+package org.team401.robot
 
-import org.strongback.command.CommandGroup
-import org.team401.robot.arm.Arm
+import org.strongback.components.Switch
 
-class FireBoulder(arm: Arm, throttle: Double) : CommandGroup() {
+class Switch(val switch: Switch) : Switch {
 
-    init {
-        sequentially(
-                SetWheelSpeed(arm.shooter, throttle),
-                WaitMs(1000),
-                PushBoulder(arm.shooter.solenoid),
-                SetWheelSpeed(arm.shooter, 0.0)
-        )
+    var inverted = false
+        private set
+
+    override fun isTriggered(): Boolean {
+        if (inverted)
+            return !switch.isTriggered
+        else
+            return switch.isTriggered
+    }
+
+    fun invert() {
+        inverted = !inverted
     }
 }

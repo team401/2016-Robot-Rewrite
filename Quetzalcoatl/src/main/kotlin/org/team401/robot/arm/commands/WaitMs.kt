@@ -1,5 +1,5 @@
 /*
-    Quetzalcoatl - Copperhead Robotics 2016 Robot code for FIRST Stronghold
+    Quetzalcoatl
     Copyright (C) 2016 Zach Kozar
 
     This program is free software; you can redistribute it and/or modify
@@ -18,17 +18,18 @@
 */
 package org.team401.robot.arm.commands
 
-import org.strongback.command.CommandGroup
-import org.team401.robot.arm.Arm
+import org.strongback.command.Command
+import java.util.concurrent.TimeUnit
 
-class FireBoulder(arm: Arm, throttle: Double) : CommandGroup() {
+class WaitMs(val ms: Int) : Command() {
+
+    val start: Long
 
     init {
-        sequentially(
-                SetWheelSpeed(arm.shooter, throttle),
-                WaitMs(1000),
-                PushBoulder(arm.shooter.solenoid),
-                SetWheelSpeed(arm.shooter, 0.0)
-        )
+        start = TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS)
+    }
+
+    override fun execute(): Boolean {
+        return Math.abs(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS) - start) > ms
     }
 }

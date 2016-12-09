@@ -85,10 +85,12 @@ public class Robot extends IterativeRobot {
 
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootEnabled, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
+
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
         switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), 0));
+
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
         switchReactor.onTriggered(spinIn,
@@ -113,7 +115,6 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
-
         arm.getDart().drive(armController.getPitch().read());
     }
 
