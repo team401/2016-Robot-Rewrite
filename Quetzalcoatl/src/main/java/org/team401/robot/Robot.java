@@ -101,8 +101,8 @@ public class Robot extends IterativeRobot {
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())
                 .register("Arm Unlock", armController.getThumb())
-                .register("Top", arm.getDart().getTopHoloflex())
-                .register("Bottom", arm.getDart().getBottomHoloflex());
+                .register("Top", arm.getDart().getTopHallEffect())
+                .register("Bottom", arm.getDart().getBottomHallEffect());
 
 
     }

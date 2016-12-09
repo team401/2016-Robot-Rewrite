@@ -25,19 +25,19 @@ import org.strongback.hardware.Hardware
 class DartLinearActuator() {
 
     val motor: TalonSRX
-    val topHoloflex: Switch
-    val bottomHoloflex: Switch
+    val topHallEffect: Switch
+    val bottomHallEffect: Switch
 
     init {
         motor = Hardware.Motors.talonSRX(4)
-        topHoloflex = Hardware.Switches.normallyClosed(0)
-        bottomHoloflex = Hardware.Switches.normallyClosed(2)
+        topHallEffect = Hardware.Switches.normallyClosed(0)
+        bottomHallEffect = Hardware.Switches.normallyClosed(2)
     }
 
     fun drive(pitch: Double) {
-        if (topHoloflex.isTriggered && pitch > 0)
+        if (topHallEffect.isTriggered && pitch > 0)
             stop()
-        else if (bottomHoloflex.isTriggered && pitch < 0)
+        else if (bottomHallEffect.isTriggered && pitch < 0)
             stop()
         else
             motor.speed = pitch

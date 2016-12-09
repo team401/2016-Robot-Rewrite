@@ -20,16 +20,16 @@ package org.team401.robot.arm.commands
 
 import org.strongback.command.Command
 import org.team401.robot.arm.CannonShooter
+import org.team401.robot.math.toRange
 
 class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command() {
 
     override fun initialize() {
         shooter.spinOut(throttle)
-
     }
 
     override fun execute(): Boolean {
-        return true
+        return Math.abs(shooter.getWheelSpeed() - toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)) < 100
     }
 
     override fun interrupted() {

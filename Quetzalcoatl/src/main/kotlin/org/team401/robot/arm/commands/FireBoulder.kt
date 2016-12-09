@@ -26,7 +26,7 @@ class FireBoulder(arm: Arm, throttle: Double) : CommandGroup() {
     init {
         sequentially(
                 SetWheelSpeed(arm.shooter, throttle),
-                WaitMs(1000),
+                WaitMs(500),
                 PushBoulder(arm.shooter.solenoid),
                 SetWheelSpeed(arm.shooter, 0.0)
         )
