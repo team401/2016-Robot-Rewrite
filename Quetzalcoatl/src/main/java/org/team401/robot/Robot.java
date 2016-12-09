@@ -74,24 +74,22 @@ public class Robot extends IterativeRobot {
         Switch spinOut = () -> armController.getDPad(0).getDirection() == 0;
         Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
 
-        // y cant strongback let me invert a switch :(
-        Switch oneButtonShootEnabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
-        Switch oneButtonShootDisabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
+        BetterSwitch oneButtonShoot = new BetterSwitch(() -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
 
         SwitchReactor switchReactor = Strongback.switchReactor();
         switchReactor.onTriggered(gearToggle, () -> chassis.toggleGear());
         switchReactor.onTriggered(demoMode, () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
         switchReactor.onTriggered(toggleShootMode, () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootEnabled, trigger),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
-        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), 0));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, trigger),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
         switchReactor.onTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
