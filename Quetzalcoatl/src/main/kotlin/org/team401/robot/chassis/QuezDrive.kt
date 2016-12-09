@@ -41,8 +41,8 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
     }
 
     init {
-        leftGearbox = QuezGearbox(false)
-        rightGearbox = QuezGearbox(true)
+        leftGearbox = QuezGearbox(gains, false)
+        rightGearbox = QuezGearbox(gains, true)
 
         lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS), 0, 0.0, 0.0)
 
@@ -71,8 +71,6 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
         val dif = Math.abs(leftPitch - rightPitch)
         val time = Math.abs(currentMs - lastShift.ms)
         // check for .5 seconds from last shift
-        println("$leftPitch $rightPitch $currentSpeed $currentAccel $time")
-
         if (dif <= MAX_DIF && time > 500)
             if (!highGear().isTriggered &&
                     max > 0 &&

@@ -19,9 +19,11 @@
 package org.team401.robot.components
 
 import org.strongback.components.TalonSRX
+import org.strongback.control.TalonController
 import org.strongback.hardware.Hardware
+import org.team401.robot.math.PIDGains
 
-class QuezGearbox(val inverted: Boolean) {
+class QuezGearbox(gains: PIDGains, val inverted: Boolean) {
 
     val leader: TalonSRX
     val front: TalonSRX
