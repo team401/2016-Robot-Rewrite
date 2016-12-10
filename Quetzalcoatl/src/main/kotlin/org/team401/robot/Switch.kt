@@ -20,7 +20,7 @@ package org.team401.robot
 
 import org.strongback.components.Switch
 
-class Switch(val switch: Switch) : Switch {
+class Switch(val switch: Switch) : org.strongback.components.Switch {
 
     var inverted = false
         private set
@@ -32,7 +32,8 @@ class Switch(val switch: Switch) : Switch {
             return switch.isTriggered
     }
 
-    fun invert() {
+    fun invert(): Switch {
         inverted = !inverted
+        return this
     }
 }

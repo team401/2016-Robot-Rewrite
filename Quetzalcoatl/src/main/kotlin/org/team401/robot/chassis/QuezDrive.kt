@@ -36,8 +36,8 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
         const val MAX_DIF = 0.20
         const val TIME_INTERVAL = 20 // in ms
         // TODO find values
-        const val SPEED_CONST = 5.0
-        const val LOW_SPEED_CONST = 2.0
+        const val SPEED_CONST = 4112.0
+        const val LOW_SPEED_CONST = 1552.0
     }
 
     init {
@@ -71,16 +71,16 @@ class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
         val dif = Math.abs(leftPitch - rightPitch)
         val time = Math.abs(currentMs - lastShift.ms)
         // check for .5 seconds from last shift
-        println("$leftPitch $rightPitch $currentSpeed $currentAccel $time")
+        // println("$leftPitch $rightPitch $currentSpeed $currentAccel $time")
 
         if (dif <= MAX_DIF && time > 500)
             if (!highGear().isTriggered &&
                     max > 0 &&
-                    currentSpeed >= SPEED_CONST + SPEED_CONST * .2 &&
+                    currentSpeed >= SPEED_CONST &&
                     currentAccel > 0)
                 toggleGear(currentSpeed, currentAccel)
             else if (highGear().isTriggered &&
-                    currentSpeed <= SPEED_CONST &&
+                    currentSpeed <= SPEED_CONST * 0.75 &&
                     max > 0.75 &&
                     currentAccel < 0)
                 toggleGear(currentSpeed, currentAccel)

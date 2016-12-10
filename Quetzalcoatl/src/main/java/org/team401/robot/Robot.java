@@ -37,6 +37,7 @@ import org.team401.robot.chassis.QuezDrive;
 import org.team401.robot.commands.ToggleDemoMode;
 import org.team401.robot.components.DartLinearActuator;
 import org.team401.robot.math.PIDGains;
+import org.team401.robot.path.FalconPathPlanner;
 
 public class Robot extends IterativeRobot {
 
@@ -75,23 +76,22 @@ public class Robot extends IterativeRobot {
         Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
 
         // y cant strongback let me invert a switch :(
-        Switch oneButtonShootEnabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
-        Switch oneButtonShootDisabled = () -> SmartDashboard.getBoolean("Auto Shooting Mode", false);
+        org.team401.robot.Switch oneButtonShoot = new org.team401.robot.Switch(() -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
 
         SwitchReactor switchReactor = Strongback.switchReactor();
         switchReactor.onTriggered(gearToggle, () -> chassis.toggleGear());
         switchReactor.onTriggered(demoMode, () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
         switchReactor.onTriggered(toggleShootMode, () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootEnabled, trigger),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
-        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShootDisabled, spinOut),
+        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), 0));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShootDisabled, trigger),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
         switchReactor.onTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
@@ -103,8 +103,6 @@ public class Robot extends IterativeRobot {
                 .register("Arm Unlock", armController.getThumb())
                 .register("Top", arm.getDart().getTopHallEffect())
                 .register("Bottom", arm.getDart().getBottomHallEffect());
-
-
     }
 
     @Override
@@ -121,6 +119,8 @@ public class Robot extends IterativeRobot {
     @Override
     public void autonomousInit() {
         Strongback.start();
+        FalconPathPlanner p = new FalconPathPlanner(new double[][] {});
+        p.calculate(10, .02, 2);
     }
 
     @Override
