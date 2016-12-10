@@ -20,20 +20,19 @@ package org.team401.robot
 
 import org.strongback.components.Switch
 
-class Switch(val switch: Switch) : org.strongback.components.Switch {
-
-    var inverted = false
-        private set
+/**
+ * A better implementation of org.strongback.components.Switch
+ */
+class BetterSwitch(val switch: Switch) : Switch {
 
     override fun isTriggered(): Boolean {
-        if (inverted)
-            return !switch.isTriggered
-        else
-            return switch.isTriggered
+        return switch.isTriggered
     }
 
-    fun invert(): Switch {
-        inverted = !inverted
-        return this
+    /**
+     * Returns a new switch instance that triggers when the original is false
+     */
+    fun invert(): BetterSwitch {
+        return BetterSwitch(Switch { !switch.isTriggered })
     }
 }

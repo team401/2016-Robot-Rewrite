@@ -24,7 +24,7 @@ import org.team401.robot.components.QuezGearbox
 import org.team401.robot.math.PIDGains
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(gains: PIDGains, val shifter: Solenoid, var demoMode: Boolean) {
+class QuezDrive(val shifter: Solenoid, var demoMode: Boolean) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox

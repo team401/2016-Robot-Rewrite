@@ -46,9 +46,6 @@ public class Robot extends IterativeRobot {
 
     private FlightStick leftDriveController, rightDriveController, armController;
 
-    private int tick;
-
-
     @Override
     public void robotInit() {
         Strongback.configure()
@@ -62,6 +59,7 @@ public class Robot extends IterativeRobot {
         arm = new Arm(new DartLinearActuator(),
                 new CannonShooter(new PIDGains(1, 0, 0), shooter, false, false));
 
+        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
         armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
 
@@ -75,13 +73,17 @@ public class Robot extends IterativeRobot {
         Switch spinOut = () -> armController.getDPad(0).getDirection() == 0;
         Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
 
-        // y cant strongback let me invert a switch :(
-        org.team401.robot.Switch oneButtonShoot = new org.team401.robot.Switch(() -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
+        BetterSwitch oneButtonShoot = new BetterSwitch(
+                () -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
 
         SwitchReactor switchReactor = Strongback.switchReactor();
-        switchReactor.onTriggered(gearToggle, () -> chassis.toggleGear());
-        switchReactor.onTriggered(demoMode, () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
-        switchReactor.onTriggered(toggleShootMode, () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
+
+        switchReactor.onTriggered(gearToggle,
+                () -> chassis.toggleGear());
+        switchReactor.onTriggered(demoMode,
+                () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
+        switchReactor.onTriggered(toggleShootMode,
+                () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
 
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
