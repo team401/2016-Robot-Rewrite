@@ -42,11 +42,11 @@ class CannonShooter(gains: PIDGains, val solenoid: Solenoid, val auto: Boolean, 
     }
 
     init {
-        leftWheel = Hardware.Controllers.talonController(3, 20.0, 0.0)
+        leftWheel = Hardware.Controllers.talonController(3, 10.0, 0.0)
         leftWheel.controlMode = TalonController.ControlMode.SPEED
         leftWheel.withGains(gains.p, gains.i, gains.d)
 
-        rightWheel = Hardware.Controllers.talonController(8, 20.0, 0.0).reverseOutput(true)
+        rightWheel = Hardware.Controllers.talonController(8, 10.0, 0.0).reverseOutput(true)
         rightWheel.controlMode = TalonController.ControlMode.SPEED
         rightWheel.withGains(gains.p, gains.i, gains.d)
     }
@@ -67,7 +67,7 @@ class CannonShooter(gains: PIDGains, val solenoid: Solenoid, val auto: Boolean, 
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(throttle: Double) {
-        val range = toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)
+        val range = toRange(throttle, -1.0, 1.0, 1000.0, 5000.0)
         val speed = if (demoMode) range / 2 else range
         leftWheel.speed = speed
         rightWheel.speed = speed

@@ -31,7 +31,7 @@ class DartLinearActuator() {
     init {
         motor = Hardware.Motors.talonSRX(4)
         topHallEffect = Hardware.Switches.normallyClosed(0)
-        bottomHallEffect = Hardware.Switches.normallyClosed(2)
+        bottomHallEffect = Hardware.Switches.normallyClosed(1)
     }
 
     fun drive(pitch: Double) {

@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
                 .recordEventsToFile("/home/lvuser/", 2097152);
 
         Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
-        chassis = new QuezDrive(new PIDGains(1, 0, 0), shifter, false);
+        chassis = new QuezDrive(shifter, false);
 
         Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 5, Solenoid.Direction.RETRACTING);
         arm = new Arm(new DartLinearActuator(),

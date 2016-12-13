@@ -29,7 +29,7 @@ class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command(
     }
 
     override fun execute(): Boolean {
-        return Math.abs(shooter.getWheelSpeed() - toRange(throttle, 0.0, 1.0, 1000.0, 5000.0)) < 100
+        return Math.abs(shooter.getWheelSpeed() - toRange(throttle, -1.0, 1.0, 1000.0, 5000.0)) < 100
     }
 
     override fun interrupted() {
