@@ -30,12 +30,10 @@ import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
-import org.team401.robot.arm.commands.FireBoulder;
-import org.team401.robot.arm.commands.PushBoulder;
 import org.team401.robot.arm.commands.SetWheelSpeed;
 import org.team401.robot.chassis.QuezDrive;
-import org.team401.robot.commands.ToggleDemoMode;
 import org.team401.robot.components.DartLinearActuator;
+import org.team401.robot.math.MathUtilsKt;
 import org.team401.robot.math.PIDGains;
 import org.team401.robot.path.FalconPathPlanner;
 
@@ -52,12 +50,17 @@ public class Robot extends IterativeRobot {
                 .recordDataToFile("/home/lvuser/")
                 .recordEventsToFile("/home/lvuser/", 2097152);
 
+        BetterSwitch oneButtonShoot = new BetterSwitch(
+                () -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
+        BetterSwitch demoMode = new BetterSwitch(
+                () -> SmartDashboard.getBoolean("Demo Mode", false));
+
         Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
-        chassis = new QuezDrive(shifter, false);
+        chassis = new QuezDrive(shifter, demoMode);
 
         Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 5, Solenoid.Direction.RETRACTING);
         arm = new Arm(new DartLinearActuator(),
-                new CannonShooter(new PIDGains(1, 0, 0), shooter, false, false));
+                new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), shooter, oneButtonShoot, demoMode));
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
@@ -67,25 +70,24 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Auto Shooting Mode", true);
 
         Switch gearToggle = rightDriveController.getButton(2);
-        Switch demoMode = armController.getButton(9); // change these buttons
+        Switch toggleDemoMode = armController.getButton(9); // change these buttons
         Switch toggleShootMode = armController.getButton(10);
         Switch trigger = armController.getTrigger();
         Switch spinOut = () -> armController.getDPad(0).getDirection() == 0;
         Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
 
-        BetterSwitch oneButtonShoot = new BetterSwitch(
-                () -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
-
         SwitchReactor switchReactor = Strongback.switchReactor();
 
-        switchReactor.onTriggered(gearToggle,
-                () -> chassis.toggleGear());
-        switchReactor.onTriggered(demoMode,
-                () -> Strongback.submit(new ToggleDemoMode(chassis, arm)));
+        /*switchReactor.onTriggered(gearToggle,
+                () -> chassis.toggleGear());*/
+        switchReactor.onTriggered(toggleDemoMode,
+                () -> SmartDashboard.putBoolean("Demo Mode", !SmartDashboard.getBoolean("Demo Mode")));
         switchReactor.onTriggered(toggleShootMode,
-                () -> SmartDashboard.putBoolean("Auto Shooting Mode", SmartDashboard.getBoolean("Auto Shooting Mode")));
+                () -> SmartDashboard.putBoolean("Auto Shooting Mode", !SmartDashboard.getBoolean("Auto Shooting Mode")));
+        switchReactor.onTriggered(armController.getButton(8),
+                () -> SmartDashboard.putNumber("Pulses per Rev", 20));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
+        /*switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
 
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
@@ -95,9 +97,14 @@ public class Robot extends IterativeRobot {
 
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
-        switchReactor.onTriggered(spinIn,
+        switchReactor.whileTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
         switchReactor.onUntriggered(spinIn,
+                () -> arm.getShooter().stop());*/
+
+        switchReactor.onTriggeredSubmit(armController.getButton(5),
+                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
+        switchReactor.onUntriggered(armController.getButton(5),
                 () -> arm.getShooter().stop());
 
         Strongback.dataRecorder()
@@ -116,6 +123,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
         arm.getDart().drive(armController.getPitch().read());
+
+        SmartDashboard.putNumber("Desired Speed", MathUtilsKt.toRange(armController.getThrottle().read()*-1, -1, 1, 1000.0, 5000.0));
     }
 
     @Override

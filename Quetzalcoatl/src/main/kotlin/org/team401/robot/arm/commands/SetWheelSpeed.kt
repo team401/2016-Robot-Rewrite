@@ -18,6 +18,7 @@
 */
 package org.team401.robot.arm.commands
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.strongback.command.Command
 import org.team401.robot.arm.CannonShooter
 import org.team401.robot.math.toRange
@@ -29,7 +30,11 @@ class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command(
     }
 
     override fun execute(): Boolean {
-        return Math.abs(shooter.getWheelSpeed() - toRange(throttle, -1.0, 1.0, 1000.0, 5000.0)) < 100
+        SmartDashboard.putNumber("Left Encoder", shooter.leftWheel.selectedSensor.rate)
+        SmartDashboard.putNumber("Right Encoder", shooter.rightWheel.selectedSensor.rate)
+        SmartDashboard.putBoolean("Left Within Tolerance", shooter.rightWheel.isWithinTolerance)
+        SmartDashboard.putBoolean("Right Within Tolerance", shooter.leftWheel.isWithinTolerance)
+        return shooter.leftWheel.isWithinTolerance && shooter.rightWheel.isWithinTolerance
     }
 
     override fun interrupted() {

@@ -31,6 +31,7 @@ def robotManifest = {
 dependencies {
     compile files('libs/strongback.jar')
     compile files('libs/strongback-testing.jar')
+    compile files('libs/NetworkClient.jar')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 

@@ -20,11 +20,11 @@ package org.team401.robot.chassis
 
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
+import org.team401.robot.BetterSwitch
 import org.team401.robot.components.QuezGearbox
-import org.team401.robot.math.PIDGains
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(val shifter: Solenoid, var demoMode: Boolean) {
+class QuezDrive(val shifter: Solenoid, var demoMode: BetterSwitch) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox
@@ -58,14 +58,14 @@ class QuezDrive(val shifter: Solenoid, var demoMode: Boolean) {
      * Drive at different speeds with each gearbox.
      */
     fun drive(leftPitch: Double, rightPitch: Double) {
-        val currentSpeed = (leftGearbox.getSpeed() + rightGearbox.getSpeed()) / 2                // get speed
-        val currentAccel = (currentSpeed - lastSpeed) / TIME_INTERVAL                            // calculate acceleration
+        /*val currentSpeed = (leftGearbox.getSpeed() + rightGearbox.getSpeed()) / 2                // get speed
+        val currentAccel = (currentSpeed - lastSpeed) / TIME_INTERVAL */                           // calculate acceleration
 
-        drive(leftPitch, rightPitch, currentSpeed, currentAccel)
+        drive(leftPitch, rightPitch, 0.0, 0.0)
     }
 
     fun drive(leftPitch: Double, rightPitch: Double, currentSpeed: Double, currentAccel: Double) {
-        val currentMs = TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS)   // get current ms
+        /*val currentMs = TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS)   // get current ms
         // only shift if were going mostly straight
         val max = Math.max(leftPitch, rightPitch)
         val dif = Math.abs(leftPitch - rightPitch)
@@ -86,11 +86,11 @@ class QuezDrive(val shifter: Solenoid, var demoMode: Boolean) {
                 toggleGear(currentSpeed, currentAccel)
             else if (highGear().isTriggered &&
                     currentSpeed <= LOW_SPEED_CONST)
-                toggleGear(currentSpeed, currentAccel)
+                toggleGear(currentSpeed, currentAccel)*/
 
-        leftGearbox.setSpeed(if (demoMode) leftPitch / 2 else leftPitch)
-        rightGearbox.setSpeed(if (demoMode) rightPitch / 2 else rightPitch)
-        lastSpeed = currentSpeed
+        leftGearbox.setSpeed(if (demoMode.isTriggered) leftPitch / 2 else leftPitch)
+        rightGearbox.setSpeed(if (demoMode.isTriggered) rightPitch / 2 else rightPitch)
+        //lastSpeed = currentSpeed
     }
 
     fun toggleGear() {
@@ -100,6 +100,7 @@ class QuezDrive(val shifter: Solenoid, var demoMode: Boolean) {
             shifter.extend()
     }
 
+    @Deprecated("Gearbox has mechanical problems")
     private fun toggleGear(speed: Double, accel: Double) {
         toggleGear()
         lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS),
