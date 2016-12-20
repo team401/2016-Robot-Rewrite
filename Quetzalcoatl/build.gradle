@@ -39,11 +39,6 @@ jar {
     manifest robotManifest
 }
 
-task genJavadoc(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
 artifacts {
-    archives genJavadoc
+    //archives genJavadoc
 }
