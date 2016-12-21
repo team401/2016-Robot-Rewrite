@@ -121,7 +121,10 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
-        arm.getDart().drive(armController.getPitch().read());
+        if (armController.getButton(2).isTriggered())
+            arm.getDart().drive(armController.getPitch().read());
+        else
+            arm.getDart().stop();
     }
 
     @Override
