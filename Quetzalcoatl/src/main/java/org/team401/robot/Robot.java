@@ -30,6 +30,7 @@ import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
+import org.team401.robot.arm.commands.PushBoulder;
 import org.team401.robot.arm.commands.SetWheelSpeed;
 import org.team401.robot.chassis.QuezDrive;
 import org.team401.robot.components.DartLinearActuator;
@@ -95,12 +96,12 @@ public class Robot extends IterativeRobot {
         switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), 0));
 
-        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
+        */switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
         switchReactor.whileTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
         switchReactor.onUntriggered(spinIn,
-                () -> arm.getShooter().stop());*/
+                () -> arm.getShooter().stop());
 
         switchReactor.onTriggeredSubmit(armController.getButton(5),
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
