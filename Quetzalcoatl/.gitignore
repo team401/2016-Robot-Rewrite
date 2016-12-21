@@ -1,9 +1,8 @@
 
 /.gradle/
-/.idea/
+/.idea/workspace.xml
+/.idea/libraries
 /GradleRIO4Dummies.txt
 /build/
 /.DS_Store
 /Quetzalcoatl.iws
-/Quetzalcoatl.ipr
-/Quetzalcoatl.iml
