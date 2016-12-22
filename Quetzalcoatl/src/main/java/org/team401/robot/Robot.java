@@ -56,10 +56,10 @@ public class Robot extends IterativeRobot {
         BetterSwitch demoMode = new BetterSwitch(
                 () -> SmartDashboard.getBoolean("Demo Mode", false));
 
-        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(0, 4, Solenoid.Direction.RETRACTING);
+        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(4, 1, Solenoid.Direction.RETRACTING);
         chassis = new QuezDrive(shifter, demoMode);
 
-        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(1, 5, Solenoid.Direction.RETRACTING);
+        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(5, 2, Solenoid.Direction.RETRACTING);
         arm = new Arm(new DartLinearActuator(),
                 new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), shooter, oneButtonShoot, demoMode));
 
@@ -70,12 +70,12 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Demo Mode", false);
         SmartDashboard.putBoolean("Auto Shooting Mode", true);
 
-        Switch gearToggle = rightDriveController.getButton(2);
+        //Switch gearToggle = rightDriveController.getButton(2);
         Switch toggleDemoMode = armController.getButton(9); // change these buttons
         Switch toggleShootMode = armController.getButton(10);
         Switch trigger = armController.getTrigger();
-        Switch spinOut = () -> armController.getDPad(0).getDirection() == 0;
-        Switch spinIn = () -> armController.getDPad(0).getDirection() == 2; // ??????????
+        Switch spinOut = armController.getButton(5);
+        Switch spinIn = armController.getButton(3);
 
         SwitchReactor switchReactor = Strongback.switchReactor();
 
@@ -94,19 +94,22 @@ public class Robot extends IterativeRobot {
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
         switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
-                () -> new SetWheelSpeed(arm.getShooter(), 0));
+                () -> new SetWheelSpeed(arm.getShooter(), 0));*/
 
-        */switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
         switchReactor.whileTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
         switchReactor.onUntriggered(spinIn,
                 () -> arm.getShooter().stop());
 
-        switchReactor.onTriggeredSubmit(armController.getButton(5),
+        switchReactor.onTriggeredSubmit(spinOut,
                 () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
-        switchReactor.onUntriggered(armController.getButton(5),
-                () -> arm.getShooter().stop());
+        switchReactor.onUntriggered(spinOut,
+                () -> {
+                    arm.getShooter().stop();
+                    Strongback.killAllCommands();
+                });
 
         Strongback.dataRecorder()
                 .register("Gear", chassis.highGear())

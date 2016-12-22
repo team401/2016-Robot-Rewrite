@@ -41,19 +41,19 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Sol
     val rightWheel: TalonController
 
     companion object {
-        const val INTAKE_SPEED = 2000.0 // TODO fix intake speed
+        const val INTAKE_SPEED = 2000.0 * 60 // TODO fix intake speed
     }
 
     init {
-        leftWheel = Hardware.Controllers.talonController(3, SmartDashboard.getNumber("Pulses per Rev", 20.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
+        leftWheel = Hardware.Controllers.talonController(3, SmartDashboard.getNumber("Pulses per Rev", 10.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
         leftWheel.controlMode = TalonController.ControlMode.SPEED
         leftWheel.withGains(leftGains.p, leftGains.i, leftGains.d)
-        leftWheel.withTolerance(100.0)
+        leftWheel.withTolerance(600.0)
 
-        rightWheel = Hardware.Controllers.talonController(8, SmartDashboard.getNumber("Pulses per Rev", 20.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
+        rightWheel = Hardware.Controllers.talonController(8, SmartDashboard.getNumber("Pulses per Rev", 10.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
         rightWheel.controlMode = TalonController.ControlMode.SPEED
         rightWheel.withGains(rightGains.p, rightGains.i, rightGains.d)
-        rightWheel.withTolerance(100.0)
+        rightWheel.withTolerance(600.0)
     }
 
     /**
@@ -62,8 +62,8 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Sol
      */
     fun spinIn() {
         if (!isBallIn()) {
-            //leftWheel.reverse(INTAKE_SPEED)
-            //rightWheel.forward(INTAKE_SPEED)
+            leftWheel.withTarget(INTAKE_SPEED)
+            rightWheel.withTarget(-INTAKE_SPEED)
         } else
             stop()
     }
@@ -72,7 +72,7 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Sol
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(throttle: Double) {
-        val speed = toRange(throttle * -1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 3000.0 else 5000.0)
+        val speed = toRange(throttle * -1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 3000.0 else 5000.0) * 60
         leftWheel.withTarget(-speed)
         rightWheel.withTarget(speed)
     }
