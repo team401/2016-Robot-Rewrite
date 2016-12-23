@@ -18,14 +18,10 @@
 */
 package org.team401.robot.arm
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
-import org.strongback.command.Requirable
+import edu.wpi.first.wpilibj.CANTalon
 import org.strongback.components.Solenoid
-import org.strongback.components.Stoppable
-import org.strongback.components.TalonSRX
-import org.strongback.control.TalonController
 import org.strongback.hardware.Hardware
-import org.team401.robot.BetterSwitch
+import org.team401.robot.*
 import org.team401.robot.math.PIDGains
 import org.team401.robot.math.toRange
 
@@ -35,25 +31,35 @@ import org.team401.robot.math.toRange
  * @param solenoid the solenoid that controls the robot's shooter
  * @param auto whether to use commands to auto shoot or shoot manually
  */
-class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Solenoid, val auto: BetterSwitch, var demoMode: BetterSwitch) : Requirable, Stoppable {
+class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: BetterSwitch, val auto: BetterSwitch, var demoMode: BetterSwitch) {
 
-    val leftWheel: TalonController
-    val rightWheel: TalonController
+    val leftWheel: CANTalon
+    val rightWheel: CANTalon
+
+    val solenoid: Solenoid
+
+    // TODO: fix units for PID
 
     companion object {
-        const val INTAKE_SPEED = 2000.0 * 60 // TODO fix intake speed
+        const val INTAKE_SPEED = 2000.0
     }
 
     init {
-        leftWheel = Hardware.Controllers.talonController(3, SmartDashboard.getNumber("Pulses per Rev", 10.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
-        leftWheel.controlMode = TalonController.ControlMode.SPEED
-        leftWheel.withGains(leftGains.p, leftGains.i, leftGains.d)
-        leftWheel.withTolerance(600.0)
+        leftWheel = CANTalon(SHOOTER_LEFT)
+        leftWheel.setControlMode(CANTalon.TalonControlMode.Speed.value)
+        leftWheel.setPID(leftGains.p, leftGains.i, leftGains.d)
+        leftWheel.configEncoderCodesPerRev(20)
+        leftWheel.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder)
+        leftWheel.enable()
 
-        rightWheel = Hardware.Controllers.talonController(8, SmartDashboard.getNumber("Pulses per Rev", 10.0)/360.0, 0.0).setFeedbackDevice(TalonSRX.FeedbackDevice.QUADRATURE_ENCODER)
-        rightWheel.controlMode = TalonController.ControlMode.SPEED
-        rightWheel.withGains(rightGains.p, rightGains.i, rightGains.d)
-        rightWheel.withTolerance(600.0)
+        rightWheel = CANTalon(SHOOTER_RIGHT)
+        rightWheel.setControlMode(CANTalon.TalonControlMode.Speed.value)
+        rightWheel.setPID(rightGains.p, rightGains.i, rightGains.d)
+        rightWheel.configEncoderCodesPerRev(20)
+        rightWheel.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder)
+        rightWheel.enable()
+
+        solenoid = Hardware.Solenoids.doubleSolenoid(SHOOTING_SOLENOID, 2, Solenoid.Direction.RETRACTING)
     }
 
     /**
@@ -62,8 +68,8 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Sol
      */
     fun spinIn() {
         if (!isBallIn()) {
-            leftWheel.withTarget(INTAKE_SPEED)
-            rightWheel.withTarget(-INTAKE_SPEED)
+            leftWheel.setpoint = INTAKE_SPEED
+            rightWheel.setpoint = -INTAKE_SPEED
         } else
             stop()
     }
@@ -72,23 +78,23 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val solenoid: Sol
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(throttle: Double) {
-        val speed = toRange(throttle * -1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 3000.0 else 5000.0) * 60
-        leftWheel.withTarget(-speed)
-        rightWheel.withTarget(speed)
+        val speed = toRange(throttle * -1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 3000.0 else 5000.0)
+        leftWheel.setpoint = -speed
+        rightWheel.setpoint = speed
     }
 
     /**
      * Stops the shooter wheels from spinning.
      */
-    override fun stop() {
-        leftWheel.stop()
-        rightWheel.stop()
+    fun stop() {
+        leftWheel.setpoint = 0.0
+        rightWheel.setpoint = 0.0
     }
 
     /**
      * Returns whether a ball is in the shooter or not.
      */
     fun isBallIn(): Boolean {
-        return false // TODO implement
+        return ballIn.isTriggered
     }
 }

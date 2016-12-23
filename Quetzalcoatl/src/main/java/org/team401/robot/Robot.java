@@ -55,13 +55,12 @@ public class Robot extends IterativeRobot {
                 () -> SmartDashboard.getBoolean("Auto Shooting Mode", false));
         BetterSwitch demoMode = new BetterSwitch(
                 () -> SmartDashboard.getBoolean("Demo Mode", false));
+        BetterSwitch ballIn = new BetterSwitch(Hardware.Switches.normallyClosed(ConstantsKt.BANNER_SENSOR));
 
-        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(ConstantsKt.SHIFTING_SOLENOID, 1, Solenoid.Direction.RETRACTING);
-        chassis = new QuezDrive(shifter, demoMode);
+        chassis = new QuezDrive(demoMode);
 
-        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(ConstantsKt.SHOOTING_SOLENOID, 2, Solenoid.Direction.RETRACTING);
         arm = new Arm(new DartLinearActuator(),
-                new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), shooter, oneButtonShoot, demoMode));
+                new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), ballIn, oneButtonShoot, demoMode));
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.LEFT_DRIVE);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.RIGHT_DRIVE);
@@ -86,6 +85,11 @@ public class Robot extends IterativeRobot {
         switchReactor.onTriggered(toggleShootMode,
                 () -> SmartDashboard.putBoolean("Auto Shooting Mode", !SmartDashboard.getBoolean("Auto Shooting Mode")));
 
+        switchReactor.onTriggered(ballIn,
+                () -> SmartDashboard.putBoolean("Ball In Shooter", true));
+        switchReactor.onUntriggered(ballIn,
+                () -> SmartDashboard.putBoolean("Ball In Shooter", false));
+
         // fix PID first
         /*switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
@@ -103,7 +107,7 @@ public class Robot extends IterativeRobot {
                 () -> arm.getShooter().stop());
 
         switchReactor.onTriggeredSubmit(spinOut,
-                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
+                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read(), 200));
         switchReactor.onUntriggered(spinOut,
                 () -> {
                     arm.getShooter().stop();
@@ -128,6 +132,8 @@ public class Robot extends IterativeRobot {
         arm.getDart().drive(armController.getPitch().read());
 
         SmartDashboard.putNumber("Desired Speed", MathUtilsKt.toRange(armController.getThrottle().read()*-1, -1, 1, 1000.0, 5000.0));
+        SmartDashboard.putNumber("Actual Speed (Left)", arm.getShooter().getLeftWheel().getSpeed());
+        SmartDashboard.putNumber("Actual Speed (Right)", arm.getShooter().getRightWheel().getSpeed());
     }
 
     @Override

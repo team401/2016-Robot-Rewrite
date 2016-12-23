@@ -20,14 +20,18 @@ package org.team401.robot.chassis
 
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
+import org.strongback.hardware.Hardware
 import org.team401.robot.BetterSwitch
+import org.team401.robot.SHIFTING_SOLENOID
 import org.team401.robot.components.QuezGearbox
 import java.util.concurrent.TimeUnit
 
-class QuezDrive(val shifter: Solenoid, var demoMode: BetterSwitch) {
+class QuezDrive(var demoMode: BetterSwitch) {
 
     val leftGearbox: QuezGearbox
     val rightGearbox: QuezGearbox
+
+    val shifter: Solenoid
 
     var lastShift: LastShift
     var lastSpeed: Double
@@ -43,6 +47,8 @@ class QuezDrive(val shifter: Solenoid, var demoMode: BetterSwitch) {
     init {
         leftGearbox = QuezGearbox(false)
         rightGearbox = QuezGearbox(true)
+
+        shifter = Hardware.Solenoids.doubleSolenoid(SHIFTING_SOLENOID, 1, Solenoid.Direction.RETRACTING)
 
         lastShift = LastShift(TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS), 0, 0.0, 0.0)
 

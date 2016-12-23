@@ -22,18 +22,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.strongback.command.Command
 import org.team401.robot.arm.CannonShooter
 
-class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double) : Command() {
+class SetWheelSpeed(val shooter: CannonShooter, val throttle: Double, val tolerance: Double) : Command() {
 
     override fun initialize() {
         shooter.spinOut(throttle)
     }
 
     override fun execute(): Boolean {
-        SmartDashboard.putNumber("Left Encoder", shooter.leftWheel.selectedSensor.rate/60)
-        SmartDashboard.putNumber("Right Encoder", shooter.rightWheel.selectedSensor.rate/60)
-        SmartDashboard.putBoolean("Left Within Tolerance", shooter.rightWheel.isWithinTolerance)
-        SmartDashboard.putBoolean("Right Within Tolerance", shooter.leftWheel.isWithinTolerance)
-        return shooter.leftWheel.isWithinTolerance && shooter.rightWheel.isWithinTolerance
+        return Math.abs(shooter.leftWheel.speed - shooter.leftWheel.setpoint) < tolerance &&
+                Math.abs(shooter.rightWheel.speed - shooter.rightWheel.setpoint) < tolerance
     }
 
     override fun interrupted() {
