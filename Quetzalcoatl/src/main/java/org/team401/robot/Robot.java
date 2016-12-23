@@ -56,38 +56,37 @@ public class Robot extends IterativeRobot {
         BetterSwitch demoMode = new BetterSwitch(
                 () -> SmartDashboard.getBoolean("Demo Mode", false));
 
-        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(4, 1, Solenoid.Direction.RETRACTING);
+        Solenoid shifter = Hardware.Solenoids.doubleSolenoid(ConstantsKt.SHIFTING_SOLENOID, 1, Solenoid.Direction.RETRACTING);
         chassis = new QuezDrive(shifter, demoMode);
 
-        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(5, 2, Solenoid.Direction.RETRACTING);
+        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(ConstantsKt.SHOOTING_SOLENOID, 2, Solenoid.Direction.RETRACTING);
         arm = new Arm(new DartLinearActuator(),
                 new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), shooter, oneButtonShoot, demoMode));
 
-        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
-        rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
-        armController = Hardware.HumanInterfaceDevices.logitechAttack3D(2);
+        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.LEFT_DRIVE);
+        rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.RIGHT_DRIVE);
+        armController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.MASHER);
 
         SmartDashboard.putBoolean("Demo Mode", false);
         SmartDashboard.putBoolean("Auto Shooting Mode", true);
 
-        //Switch gearToggle = rightDriveController.getButton(2);
-        Switch toggleDemoMode = armController.getButton(9); // change these buttons
-        Switch toggleShootMode = armController.getButton(10);
+        Switch gearToggle = rightDriveController.getButton(ConstantsKt.TOGGLE_GEAR);
+        Switch toggleDemoMode = armController.getButton(ConstantsKt.TOGGLE_DEMO);
+        Switch toggleShootMode = armController.getButton(ConstantsKt.TOGGLE_AUTO_SHOOT);
         Switch trigger = armController.getTrigger();
-        Switch spinOut = armController.getButton(5);
-        Switch spinIn = armController.getButton(3);
+        Switch spinOut = armController.getButton(ConstantsKt.SPIN_OUT);
+        Switch spinIn = armController.getButton(ConstantsKt.SPIN_IN);
 
         SwitchReactor switchReactor = Strongback.switchReactor();
 
-        /*switchReactor.onTriggered(gearToggle,
+        /*switchReactor.onTriggered(gearToggle, // shifting is a no no
                 () -> chassis.toggleGear());*/
         switchReactor.onTriggered(toggleDemoMode,
                 () -> SmartDashboard.putBoolean("Demo Mode", !SmartDashboard.getBoolean("Demo Mode")));
         switchReactor.onTriggered(toggleShootMode,
                 () -> SmartDashboard.putBoolean("Auto Shooting Mode", !SmartDashboard.getBoolean("Auto Shooting Mode")));
-        switchReactor.onTriggered(armController.getButton(8),
-                () -> SmartDashboard.putNumber("Pulses per Rev", 20));
 
+        // fix PID first
         /*switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
 

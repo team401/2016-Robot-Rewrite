@@ -21,6 +21,7 @@ package org.team401.robot.components
 import org.strongback.components.Switch
 import org.strongback.components.TalonSRX
 import org.strongback.hardware.Hardware
+import org.team401.robot.*
 
 class DartLinearActuator() {
 
@@ -29,9 +30,9 @@ class DartLinearActuator() {
     val bottomHallEffect: Switch
 
     init {
-        motor = Hardware.Motors.talonSRX(4)
-        topHallEffect = Hardware.Switches.normallyClosed(0)
-        bottomHallEffect = Hardware.Switches.normallyClosed(1)
+        motor = Hardware.Motors.talonSRX(DART_MOTOR)
+        topHallEffect = Hardware.Switches.normallyClosed(HALL_EFFECT_TOP)
+        bottomHallEffect = Hardware.Switches.normallyClosed(HALL_EFFECT_BOTTOM)
     }
 
     fun drive(pitch: Double) {
