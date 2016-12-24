@@ -25,13 +25,7 @@ import org.team401.robot.*
 import org.team401.robot.math.PIDGains
 import org.team401.robot.math.toRange
 
-
-/**
- * @param gains PID values for the wheels
- * @param solenoid the solenoid that controls the robot's shooter
- * @param auto whether to use commands to auto shoot or shoot manually
- */
-class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: BetterSwitch, val auto: BetterSwitch, var demoMode: BetterSwitch) {
+class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: BetterSwitch, val demoMode: BetterSwitch) {
 
     val leftWheel: CANTalon
     val rightWheel: CANTalon
@@ -45,19 +39,19 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: Bette
     }
 
     init {
-        leftWheel = CANTalon(SHOOTER_LEFT)
-        leftWheel.setControlMode(CANTalon.TalonControlMode.Speed.value)
+        leftWheel = CANTalon(SHOOTER_MOTOR_LEFT)
         leftWheel.setPID(leftGains.p, leftGains.i, leftGains.d)
         leftWheel.configEncoderCodesPerRev(20)
         leftWheel.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder)
         leftWheel.enable()
 
-        rightWheel = CANTalon(SHOOTER_RIGHT)
-        rightWheel.setControlMode(CANTalon.TalonControlMode.Speed.value)
+        rightWheel = CANTalon(SHOOTER_MOTOR_RIGHT)
         rightWheel.setPID(rightGains.p, rightGains.i, rightGains.d)
         rightWheel.configEncoderCodesPerRev(20)
         rightWheel.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder)
         rightWheel.enable()
+
+        changeControlMode(CANTalon.TalonControlMode.Speed)
 
         solenoid = Hardware.Solenoids.doubleSolenoid(SHOOTING_SOLENOID, 2, Solenoid.Direction.RETRACTING)
     }
@@ -67,6 +61,7 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: Bette
      * cannon then the wheels will not spin.
      */
     fun spinIn() {
+        changeControlMode(CANTalon.TalonControlMode.Speed)
         if (!isBallIn()) {
             leftWheel.setpoint = INTAKE_SPEED
             rightWheel.setpoint = -INTAKE_SPEED
@@ -78,7 +73,8 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: Bette
      * Spin the wheels at a certain speed to shoot the ball.
      */
     fun spinOut(throttle: Double) {
-        val speed = toRange(throttle * -1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 3000.0 else 5000.0)
+        changeControlMode(CANTalon.TalonControlMode.Speed)
+        val speed = toRange(throttle*-1, -1.0, 1.0, 1000.0, if (demoMode.isTriggered) 28000.0 else 4300.0)
         leftWheel.setpoint = -speed
         rightWheel.setpoint = speed
     }
@@ -87,6 +83,7 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: Bette
      * Stops the shooter wheels from spinning.
      */
     fun stop() {
+        changeControlMode(CANTalon.TalonControlMode.PercentVbus)
         leftWheel.setpoint = 0.0
         rightWheel.setpoint = 0.0
     }
@@ -96,5 +93,17 @@ class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: Bette
      */
     fun isBallIn(): Boolean {
         return ballIn.isTriggered
+    }
+
+    fun updateGains(leftGains: PIDGains, leftF: Double, rightGains: PIDGains, rightF: Double) {
+        leftWheel.setPID(leftGains.p, leftGains.i, leftGains.d)
+        leftWheel.f = leftF
+        rightWheel.setPID(rightGains.p, rightGains.i, rightGains.d)
+        rightWheel.f = rightF
+    }
+
+    fun changeControlMode(mode: CANTalon.TalonControlMode) {
+        leftWheel.setControlMode(mode.value)
+        rightWheel.setControlMode(mode.value)
     }
 }

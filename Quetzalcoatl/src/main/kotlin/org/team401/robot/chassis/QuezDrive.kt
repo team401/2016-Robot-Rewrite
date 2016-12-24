@@ -64,14 +64,14 @@ class QuezDrive(var demoMode: BetterSwitch) {
      * Drive at different speeds with each gearbox.
      */
     fun drive(leftPitch: Double, rightPitch: Double) {
-        /*val currentSpeed = (leftGearbox.getSpeed() + rightGearbox.getSpeed()) / 2                // get speed
-        val currentAccel = (currentSpeed - lastSpeed) / TIME_INTERVAL */                           // calculate acceleration
+        val currentSpeed = (leftGearbox.getSpeed() + rightGearbox.getSpeed()) / 2                // get speed
+        val currentAccel = (currentSpeed - lastSpeed) / TIME_INTERVAL                            // calculate acceleration
 
-        drive(leftPitch, rightPitch, 0.0, 0.0)
+        drive(leftPitch, rightPitch, currentSpeed, currentAccel)
     }
 
     fun drive(leftPitch: Double, rightPitch: Double, currentSpeed: Double, currentAccel: Double) {
-        /*val currentMs = TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS)   // get current ms
+        val currentMs = TimeUnit.MILLISECONDS.convert(System.nanoTime(), TimeUnit.NANOSECONDS)   // get current ms
         // only shift if were going mostly straight
         val max = Math.max(leftPitch, rightPitch)
         val dif = Math.abs(leftPitch - rightPitch)
@@ -92,18 +92,20 @@ class QuezDrive(var demoMode: BetterSwitch) {
                 toggleGear(currentSpeed, currentAccel)
             else if (highGear().isTriggered &&
                     currentSpeed <= LOW_SPEED_CONST)
-                toggleGear(currentSpeed, currentAccel)*/
+                toggleGear(currentSpeed, currentAccel)
 
         leftGearbox.setSpeed(if (demoMode.isTriggered) leftPitch / 2 else leftPitch)
         rightGearbox.setSpeed(if (demoMode.isTriggered) rightPitch / 2 else rightPitch)
-        //lastSpeed = currentSpeed
+        lastSpeed = currentSpeed
     }
 
+    @Deprecated("Gearbox has mechanical problems")
     fun toggleGear() {
-        if (highGear().isTriggered)
+        println("Shifting doesn't work!")
+        /*if (highGear().isTriggered)
             shifter.retract()
         else
-            shifter.extend()
+            shifter.extend*/
     }
 
     @Deprecated("Gearbox has mechanical problems")

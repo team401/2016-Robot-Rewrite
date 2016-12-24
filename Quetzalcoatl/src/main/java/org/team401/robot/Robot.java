@@ -23,13 +23,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.strongback.Strongback;
 import org.strongback.SwitchReactor;
-import org.strongback.components.Solenoid;
 import org.strongback.components.Switch;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
+import org.team401.robot.arm.commands.FireBoulder;
 import org.team401.robot.arm.commands.PushBoulder;
 import org.team401.robot.arm.commands.SetWheelSpeed;
 import org.team401.robot.chassis.QuezDrive;
@@ -44,6 +44,9 @@ public class Robot extends IterativeRobot {
     private Arm arm;
 
     private FlightStick leftDriveController, rightDriveController, armController;
+
+    private double leftP, leftI, leftD, leftF;
+    private double rightP, rightI, rightD, rightF;
 
     @Override
     public void robotInit() {
@@ -60,26 +63,32 @@ public class Robot extends IterativeRobot {
         chassis = new QuezDrive(demoMode);
 
         arm = new Arm(new DartLinearActuator(),
-                new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), ballIn, oneButtonShoot, demoMode));
+                new CannonShooter(new PIDGains(1, 0, 0), new PIDGains(1, 0, 0), ballIn, demoMode));
 
-        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.LEFT_DRIVE);
-        rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.RIGHT_DRIVE);
-        armController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.MASHER);
+        leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.JOYSTICK_LEFT_DRIVE);
+        rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.JOYSTICK_RIGHT_DRIVE);
+        armController = Hardware.HumanInterfaceDevices.logitechAttack3D(ConstantsKt.JOYSTICK_MASHER);
 
-        SmartDashboard.putBoolean("Demo Mode", false);
-        SmartDashboard.putBoolean("Auto Shooting Mode", true);
+        leftP = SmartDashboard.getNumber("P Left");
+        leftI = SmartDashboard.getNumber("I Left");
+        leftD = SmartDashboard.getNumber("D Left");
+        leftF = SmartDashboard.getNumber("F Left");
+        rightP = SmartDashboard.getNumber("P Right");
+        rightI = SmartDashboard.getNumber("I Right");
+        rightD = SmartDashboard.getNumber("D Right");
+        rightF = SmartDashboard.getNumber("F Right");
 
-        Switch gearToggle = rightDriveController.getButton(ConstantsKt.TOGGLE_GEAR);
-        Switch toggleDemoMode = armController.getButton(ConstantsKt.TOGGLE_DEMO);
-        Switch toggleShootMode = armController.getButton(ConstantsKt.TOGGLE_AUTO_SHOOT);
+        Switch gearToggle = rightDriveController.getButton(ConstantsKt.SWITCH_TOGGLE_GEAR);
+        Switch toggleDemoMode = armController.getButton(ConstantsKt.SWITCH_TOGGLE_DEMO);
+        Switch toggleShootMode = armController.getButton(ConstantsKt.SWITCH_TOGGLE_AUTO_SHOOT);
         Switch trigger = armController.getTrigger();
-        Switch spinOut = armController.getButton(ConstantsKt.SPIN_OUT);
-        Switch spinIn = armController.getButton(ConstantsKt.SPIN_IN);
+        Switch spinOut = armController.getButton(ConstantsKt.SWITCH_SPIN_OUT);
+        Switch spinIn = armController.getButton(ConstantsKt.SWITCH_SPIN_IN);
 
         SwitchReactor switchReactor = Strongback.switchReactor();
 
-        /*switchReactor.onTriggered(gearToggle, // shifting is a no no
-                () -> chassis.toggleGear());*/
+        switchReactor.onTriggered(gearToggle, // shifting is a no no
+                () -> chassis.toggleGear());
         switchReactor.onTriggered(toggleDemoMode,
                 () -> SmartDashboard.putBoolean("Demo Mode", !SmartDashboard.getBoolean("Demo Mode")));
         switchReactor.onTriggered(toggleShootMode,
@@ -90,17 +99,18 @@ public class Robot extends IterativeRobot {
         switchReactor.onUntriggered(ballIn,
                 () -> SmartDashboard.putBoolean("Ball In Shooter", false));
 
-        // fix PID first
-        /*switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
+        // auto shoot
+        switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot, trigger),
                 () -> new FireBoulder(arm, armController.getThrottle().read()));
 
+        // manual shoot
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
-                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read()));
-        switchReactor.onUntriggeredSubmit(Switch.and(oneButtonShoot.invert(), spinOut),
-                () -> new SetWheelSpeed(arm.getShooter(), 0));*/
-
+                () -> new SetWheelSpeed(arm.getShooter(), armController.getThrottle().read(), 200));
         switchReactor.onTriggeredSubmit(Switch.and(oneButtonShoot.invert(), trigger),
                 () -> new PushBoulder(arm.getShooter().getSolenoid()));
+        switchReactor.onUntriggered(Switch.or(oneButtonShoot, spinOut),
+                () -> arm.getShooter().stop());
+
         switchReactor.whileTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
         switchReactor.onUntriggered(spinIn,
@@ -131,9 +141,25 @@ public class Robot extends IterativeRobot {
         chassis.drive(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
         arm.getDart().drive(armController.getPitch().read());
 
-        SmartDashboard.putNumber("Desired Speed", MathUtilsKt.toRange(armController.getThrottle().read()*-1, -1, 1, 1000.0, 5000.0));
+        SmartDashboard.putNumber("Desired Speed", MathUtilsKt.toRange(armController.getThrottle().read()*-1, -1, 1, 1500.0, 4800.0));
         SmartDashboard.putNumber("Actual Speed (Left)", arm.getShooter().getLeftWheel().getSpeed());
         SmartDashboard.putNumber("Actual Speed (Right)", arm.getShooter().getRightWheel().getSpeed());
+
+        if (SmartDashboard.getNumber("P Left") != leftP || SmartDashboard.getNumber("P Right") != rightP ||
+                SmartDashboard.getNumber("I Left") != leftI || SmartDashboard.getNumber("I Right") != rightI ||
+                SmartDashboard.getNumber("D Left") != leftD || SmartDashboard.getNumber("D Right") != rightD ||
+                SmartDashboard.getNumber("F Left") != leftF || SmartDashboard.getNumber("F Right") != rightF) {
+            leftP = SmartDashboard.getNumber("P Left");
+            leftI = SmartDashboard.getNumber("I Left");
+            leftD = SmartDashboard.getNumber("D Left");
+            leftF = SmartDashboard.getNumber("F Left");
+            rightP = SmartDashboard.getNumber("P Right");
+            rightI = SmartDashboard.getNumber("I Right");
+            rightD = SmartDashboard.getNumber("D Right");
+            rightF = SmartDashboard.getNumber("F Left");
+            arm.getShooter().updateGains(new PIDGains(leftP, leftI/1000000, leftD), leftF,
+                    new PIDGains(rightP, rightI/1000000, rightD), rightF);
+        }
     }
 
     @Override
@@ -151,5 +177,10 @@ public class Robot extends IterativeRobot {
     @Override
     public void disabledInit() {
         Strongback.disable();
+    }
+
+    @Override
+    public void disabledPeriodic() {
+
     }
 }
