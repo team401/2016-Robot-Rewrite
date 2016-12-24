@@ -43,3 +43,7 @@ jar {
 artifacts {
     //archives genJavadoc
 }
+
+test {
+    exclude 'org/team401/robot/**'
+}

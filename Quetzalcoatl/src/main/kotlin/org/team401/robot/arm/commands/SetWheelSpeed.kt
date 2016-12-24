@@ -18,7 +18,6 @@
 */
 package org.team401.robot.arm.commands
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.strongback.command.Command
 import org.team401.robot.arm.CannonShooter
 

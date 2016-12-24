@@ -16,7 +16,7 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-package org.team401.robot
+package org.team401.robot.util
 
 import org.strongback.components.Switch
 
@@ -30,7 +30,7 @@ class BetterSwitch(val switch: Switch) : Switch {
     }
 
     /**
-     * Returns a new switch instance that triggers when the original is false
+     * Returns a new util instance that triggers when the original is false
      */
     fun invert(): BetterSwitch {
         return BetterSwitch(Switch { !switch.isTriggered })

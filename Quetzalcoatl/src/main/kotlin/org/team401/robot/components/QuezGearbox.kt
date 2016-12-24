@@ -40,8 +40,6 @@ class QuezGearbox(val inverted: Boolean) {
         }
     }
 
-    // TODO add PID control
-
     fun setSpeed(speed: Double) {
         if (inverted)
             leader.speed = -speed
@@ -51,9 +49,5 @@ class QuezGearbox(val inverted: Boolean) {
 
     fun getSpeed(): Double {
         return leader.speed
-    }
-
-    fun getVoltage(): Double {
-        return leader.voltageSensor.voltage
     }
 }

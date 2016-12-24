@@ -24,6 +24,7 @@ import org.strongback.hardware.Hardware
 import org.team401.robot.*
 import org.team401.robot.math.PIDGains
 import org.team401.robot.math.toRange
+import org.team401.robot.util.BetterSwitch
 
 class CannonShooter(leftGains: PIDGains, rightGains: PIDGains, val ballIn: BetterSwitch, val demoMode: BetterSwitch) {
 

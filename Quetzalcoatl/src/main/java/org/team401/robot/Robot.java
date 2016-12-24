@@ -37,6 +37,7 @@ import org.team401.robot.components.DartLinearActuator;
 import org.team401.robot.math.MathUtilsKt;
 import org.team401.robot.math.PIDGains;
 import org.team401.robot.path.FalconPathPlanner;
+import org.team401.robot.util.BetterSwitch;
 
 public class Robot extends IterativeRobot {
 

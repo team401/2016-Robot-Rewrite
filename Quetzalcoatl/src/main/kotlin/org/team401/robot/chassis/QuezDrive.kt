@@ -21,7 +21,7 @@ package org.team401.robot.chassis
 import org.strongback.components.Solenoid
 import org.strongback.components.Switch
 import org.strongback.hardware.Hardware
-import org.team401.robot.BetterSwitch
+import org.team401.robot.util.BetterSwitch
 import org.team401.robot.SHIFTING_SOLENOID
 import org.team401.robot.components.QuezGearbox
 import java.util.concurrent.TimeUnit
