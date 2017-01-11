@@ -84,22 +84,22 @@
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Gradle: edu.wpi.first.wpilib.networktables.java:NetworkTables:arm:3.1.2">
+    <library name="Gradle: edu.wpi.first.wpilib.networktables.java:NetworkTables:arm:3.1.5">
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.2/97a3c19222f4c254e21c062e6c1677a08da60d95/NetworkTables-3.1.2-arm.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.5/181e1bee717055d1ac9478e3ec3c17c69e205b16/NetworkTables-3.1.5-arm.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.2/23c79d62c08529644a421e8b3004378617f33deb/NetworkTables-3.1.2-sources.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.5/d8df37407c87ef2cd634206297248958266b2fcf/NetworkTables-3.1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Gradle: edu.wpi.first.wpilib.networktables.java:NetworkTables:desktop:3.1.2">
+    <library name="Gradle: edu.wpi.first.wpilib.networktables.java:NetworkTables:desktop:3.1.5">
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.2/4cdcb1e2d6ed6a98695855fee036a5dda440fb2b/NetworkTables-3.1.2-desktop.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.5/59920129152692ac5d17e03385032e78fdf59df2/NetworkTables-3.1.5-desktop.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.2/23c79d62c08529644a421e8b3004378617f33deb/NetworkTables-3.1.2-sources.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilib.networktables.java/NetworkTables/3.1.5/d8df37407c87ef2cd634206297248958266b2fcf/NetworkTables-3.1.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Gradle: edu.wpi.first.wpilibj:wpilibJavaFinal:2016.5.1">

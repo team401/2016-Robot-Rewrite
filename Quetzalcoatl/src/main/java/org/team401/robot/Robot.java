@@ -30,13 +30,9 @@ import org.strongback.hardware.Hardware;
 
 import org.team401.robot.arm.Arm;
 import org.team401.robot.arm.CannonShooter;
-import org.team401.robot.arm.commands.FireBoulder;
 import org.team401.robot.arm.commands.PushBoulder;
-import org.team401.robot.arm.commands.SetWheelSpeed;
 import org.team401.robot.chassis.QuezDrive;
-import org.team401.robot.commands.ToggleDemoMode;
 import org.team401.robot.components.DartLinearActuator;
-import org.team401.robot.math.PIDGains;
 import org.team401.robot.path.FalconPathPlanner;
 
 public class Robot extends IterativeRobot {
@@ -101,7 +97,7 @@ public class Robot extends IterativeRobot {
         switchReactor.onTriggered(spinIn,
                 () -> arm.getShooter().spinIn());
         switchReactor.whileTriggered(spinOut,
-                () -> arm.getShooter().spinOut(armController.getThrottle().read()));
+                () -> arm.getShooter().spinOut(armController.getThrottle().read()*-1));
         switchReactor.onUntriggered(Switch.or(spinIn, spinOut),
                 () -> arm.getShooter().stop());
 
