@@ -20,27 +20,21 @@ package org.team401.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.strongback.Strongback;
-import org.strongback.SwitchReactor;
+import org.strongback.components.LimitedMotor;
 import org.strongback.components.Motor;
 import org.strongback.components.Solenoid;
-import org.strongback.components.Switch;
 import org.strongback.components.ui.FlightStick;
 import org.strongback.drive.TankDrive;
 import org.strongback.hardware.Hardware;
 
-import org.team401.robot.arm.Arm;
-import org.team401.robot.arm.CannonShooter;
-import org.team401.robot.components.DartLinearActuator;
-
 public class Robot extends IterativeRobot {
 
     private TankDrive drive;
-    private Arm arm;
-
+    private Motor cannon;
+    private Solenoid shooter;
     private FlightStick leftDriveController, rightDriveController, armController;
-
+    private LimitedMotor dart;
     @Override
     public void robotInit() {
         Strongback.configure()
@@ -48,16 +42,14 @@ public class Robot extends IterativeRobot {
                 .recordEventsToFile("/home/lvuser/", 2097152);
         drive = new TankDrive(
                 Motor.compose(
-                        Hardware.Motors.talon(0),
-                        Hardware.Motors.talon(1)),
+                        Hardware.Motors.talon(4),
+                        Hardware.Motors.talon(5)),
                 Motor.compose(
                         Hardware.Motors.talon(2),
                         Hardware.Motors.talon(3)));
-
-        Solenoid shooter = Hardware.Solenoids.doubleSolenoid(5, 2, Solenoid.Direction.RETRACTING);
-
-        arm = new Arm(new DartLinearActuator(),
-                new CannonShooter(shooter, false, false));
+        LimitedMotor.create(Hardware.Motors.talon(6), Hardware.Switches.normallyOpen(0), Hardware.Switches.normallyOpen(1));
+        shooter = Hardware.Solenoids.doubleSolenoid(5, 2, Solenoid.Direction.RETRACTING);
+        cannon = Motor.compose(Hardware.Motors.talon(0), Hardware.Motors.talon(1).invert());
 
         leftDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(0);
         rightDriveController = Hardware.HumanInterfaceDevices.logitechAttack3D(1);
@@ -73,19 +65,19 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         drive.tank(leftDriveController.getPitch().read(), rightDriveController.getPitch().read());
         if (armController.getThumb().isTriggered())
-            arm.getDart().drive(armController.getPitch().read());
+            dart.setSpeed(armController.getPitch().read());
         else
-            arm.getDart().stop();
+            dart.stop();
         if(armController.getTrigger().isTriggered())
-            arm.getShooter().getSolenoid().extend();
+            shooter.extend();
         else
-            arm.getShooter().getSolenoid().retract();
+            shooter.retract();
         if(armController.getButton(3).isTriggered())
-            arm.getShooter().spinOut(armController.getThrottle().read());
+            cannon.setSpeed(armController.getThrottle().read());
         else if(armController.getButton(4).isTriggered())
-            arm.getShooter().spinIn();
+            cannon.setSpeed(-0.3);
         else
-            arm.getShooter().stop();
+            cannon.setSpeed(0);
     }
 
     @Override
@@ -104,5 +96,6 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic(){
         drive.tank(0,0);
+        cannon.setSpeed(0);
     }
 }
